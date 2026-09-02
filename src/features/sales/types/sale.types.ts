@@ -3,9 +3,19 @@ import type { BaseEntity } from "@/types/common.types";
 export type SaleStatus =
   | "PENDING"
   | "CONFIRMED"
+  | "PREPARING"
   | "SHIPPED"
   | "DELIVERED"
   | "CANCELLED";
+
+export type PaymentMethod =
+  | "CASH"
+  | "TRANSFER"
+  | "CREDIT_CARD";
+
+export type PaymentStatus =
+  | "PENDING"
+  | "PAID";
 
 export interface ShippingInfo {
   recipientName: string;
@@ -30,6 +40,8 @@ export interface Sale extends BaseEntity {
   items: SaleItem[];
   total: number;
   status: SaleStatus;
+  paymentMethod: PaymentMethod;
+  paymentStatus: PaymentStatus;
   shipping: ShippingInfo;
 }
 
@@ -38,5 +50,6 @@ export interface CreateSaleInput {
   customerEmail: string;
   productId: string;
   quantity: number;
+  paymentMethod: PaymentMethod;
   shipping: ShippingInfo;
 }

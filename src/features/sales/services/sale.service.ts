@@ -7,7 +7,9 @@ import { initialSales } from "@/mocks/data/sales.mock";
 
 import type {
   CreateSaleInput,
+  PaymentStatus,
   Sale,
+  SaleStatus,
 } from "../types/sale.types";
 
 import type { Product } from "@/features/products/types/product.types";
@@ -24,11 +26,25 @@ function generateId(): string {
   return `sale-${Date.now()}`;
 }
 
+function normalizeSale(
+  sale: Sale,
+): Sale {
+  return {
+    ...sale,
+    paymentMethod:
+      sale.paymentMethod ?? "CASH",
+    paymentStatus:
+      sale.paymentStatus ?? "PENDING",
+  };
+}
+
 function getSalesFromStorage(): Sale[] {
-  return getStorage<Sale[]>(
+  const sales = getStorage<Sale[]>(
     STORAGE_KEY,
     initialSales,
   );
+
+  return sales.map(normalizeSale);
 }
 
 export const saleService = {
@@ -85,6 +101,9 @@ export const saleService = {
       customerEmail:
         input.customerEmail,
 
+      paymentMethod:
+        input.paymentMethod,
+
       items: [
         {
           productId: product.id,
@@ -98,6 +117,8 @@ export const saleService = {
       total: subtotal,
 
       status: "PENDING",
+
+      paymentStatus: "PENDING",
 
       shipping: {
         recipientName:
@@ -132,5 +153,89 @@ export const saleService = {
     );
 
     return sale;
+  },
+
+  async updateStatus(
+    id: string,
+    status: SaleStatus,
+  ): Promise<Sale> {
+    await delay();
+
+    const sales =
+      getSalesFromStorage();
+
+    const saleIndex =
+      sales.findIndex(
+        (sale) => sale.id === id,
+      );
+
+    if (saleIndex === -1) {
+      throw new Error(
+        "La venta no existe",
+      );
+    }
+
+    const updatedSale: Sale = {
+      ...sales[saleIndex],
+      status,
+      updatedAt:
+        new Date().toISOString(),
+    };
+
+    const updatedSales = [
+      ...sales,
+    ];
+
+    updatedSales[saleIndex] =
+      updatedSale;
+
+    setStorage(
+      STORAGE_KEY,
+      updatedSales,
+    );
+
+    return updatedSale;
+  },
+
+  async updatePaymentStatus(
+    id: string,
+    paymentStatus: PaymentStatus,
+  ): Promise<Sale> {
+    await delay();
+
+    const sales =
+      getSalesFromStorage();
+
+    const saleIndex =
+      sales.findIndex(
+        (sale) => sale.id === id,
+      );
+
+    if (saleIndex === -1) {
+      throw new Error(
+        "La venta no existe",
+      );
+    }
+
+    const updatedSale: Sale = {
+      ...sales[saleIndex],
+      paymentStatus,
+      updatedAt:
+        new Date().toISOString(),
+    };
+
+    const updatedSales = [
+      ...sales,
+    ];
+
+    updatedSales[saleIndex] =
+      updatedSale;
+
+    setStorage(
+      STORAGE_KEY,
+      updatedSales,
+    );
+
+    return updatedSale;
   },
 };

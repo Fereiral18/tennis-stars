@@ -41,6 +41,14 @@ export const saleSchema = z.object({
       "La cantidad máxima es 100",
     ),
 
+  paymentMethod: z.enum(
+    ["CASH", "TRANSFER", "CREDIT_CARD"],
+    {
+      error:
+        "Seleccioná un medio de pago",
+    },
+  ),
+
   recipientName: z
     .string()
     .trim()

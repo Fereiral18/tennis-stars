@@ -33,6 +33,7 @@ import {
 
 import type {
   Sale,
+  SaleStatus,
 } from "../types/sale.types";
 
 import type {
@@ -58,8 +59,11 @@ export function SalesPage() {
       isSalesError,
 
     createSale,
+    updateSaleStatus,
+    updatePaymentStatus,
 
     isCreating,
+    isUpdatingPayment,
   } = useSales(products);
 
   const [
@@ -93,6 +97,52 @@ export function SalesPage() {
     );
   }
 
+  async function handleUpdateStatus(
+    sale: Sale,
+    status: SaleStatus,
+  ): Promise<void> {
+    try {
+      await updateSaleStatus(
+        sale.id,
+        status,
+      );
+
+      toast.success(
+        "Estado de la venta actualizado correctamente",
+      );
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "No fue posible actualizar el estado de la venta",
+      );
+    }
+  }
+
+  async function handleCompleteOrder(
+    sale: Sale,
+  ): Promise<void> {
+    try {
+      const updatedSale =
+        await updatePaymentStatus(
+          sale.id,
+          "PAID",
+        );
+
+      setSelectedSale(updatedSale);
+
+      toast.success(
+        "Pedido completado y pago registrado correctamente",
+      );
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "No fue posible completar el pedido",
+      );
+    }
+  }
+
   async function handleSubmit(
     data: SaleFormData,
   ): Promise<void> {
@@ -109,6 +159,9 @@ export function SalesPage() {
 
         quantity:
           data.quantity,
+
+        paymentMethod:
+          data.paymentMethod,
 
         shipping: {
           recipientName:
@@ -233,6 +286,9 @@ export function SalesPage() {
           onViewShipping={
             handleViewShipping
           }
+          onUpdateStatus={
+            handleUpdateStatus
+          }
         />
       )}
 
@@ -262,9 +318,9 @@ export function SalesPage() {
         open={
           isShippingDialogOpen
         }
-        shipping={
-          selectedSale?.shipping ??
-          null
+        sale={selectedSale}
+        isCompleting={
+          isUpdatingPayment
         }
         onOpenChange={(
           open,
@@ -279,6 +335,9 @@ export function SalesPage() {
             );
           }
         }}
+        onCompleteOrder={
+          handleCompleteOrder
+        }
       />
     </div>
   );

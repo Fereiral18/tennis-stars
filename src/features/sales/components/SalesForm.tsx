@@ -53,6 +53,7 @@ export function SaleForm({
       customerEmail: "",
       productId: "",
       quantity: 1,
+      paymentMethod: "CASH",
       recipientName: "",
       address: "",
       city: "",
@@ -289,6 +290,59 @@ export function SaleForm({
             </div>
           </div>
         )}
+      </section>
+
+      {/* Pago */}
+
+      <section className="space-y-4">
+        <div>
+          <h3 className="text-sm font-semibold text-zinc-950">
+            Medio de pago
+          </h3>
+
+          <p className="mt-1 text-xs text-zinc-500">
+            Seleccioná cómo abonó el cliente.
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="paymentMethod"
+            className="text-sm font-medium text-zinc-900"
+          >
+            Medio de pago
+          </label>
+
+          <select
+            id="paymentMethod"
+            {...register(
+              "paymentMethod",
+            )}
+            className="h-10 w-full rounded-md border border-zinc-200 bg-white px-3 text-sm outline-none focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+          >
+            <option value="CASH">
+              Efectivo
+            </option>
+
+            <option value="TRANSFER">
+              Transferencia
+            </option>
+
+            <option value="CREDIT_CARD">
+              Tarjeta de crédito
+            </option>
+          </select>
+
+          {errors.paymentMethod && (
+            <p className="text-xs text-red-500">
+              {
+                errors
+                  .paymentMethod
+                  .message
+              }
+            </p>
+          )}
+        </div>
       </section>
 
       {/* Envío */}

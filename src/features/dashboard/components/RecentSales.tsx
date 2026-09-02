@@ -9,6 +9,7 @@ interface RecentSalesProps {
 const statusLabels: Record<Sale["status"], string> = {
   PENDING: "Pendiente",
   CONFIRMED: "Confirmada",
+  PREPARING: "En preparación",
   SHIPPED: "Enviada",
   DELIVERED: "Entregada",
   CANCELLED: "Cancelada",
@@ -17,6 +18,7 @@ const statusLabels: Record<Sale["status"], string> = {
 const statusStyles: Record<Sale["status"], string> = {
   PENDING: "bg-amber-50 text-amber-700",
   CONFIRMED: "bg-blue-50 text-blue-700",
+  PREPARING: "bg-orange-50 text-orange-700",
   SHIPPED: "bg-violet-50 text-violet-700",
   DELIVERED: "bg-emerald-50 text-emerald-700",
   CANCELLED: "bg-red-50 text-red-700",

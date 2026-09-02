@@ -22,6 +22,10 @@ export const initialSales: Sale[] = [
 
     status: "DELIVERED",
 
+    paymentMethod: "CREDIT_CARD",
+
+    paymentStatus: "PAID",
+
     shipping: {
       recipientName: "Carlos Rodríguez",
       address: "Av. San Martín 1234",
@@ -56,6 +60,10 @@ export const initialSales: Sale[] = [
 
     status: "SHIPPED",
 
+    paymentMethod: "TRANSFER",
+
+    paymentStatus: "PAID",
+
     shipping: {
       recipientName: "María González",
       address: "Calle Belgrano 845",
@@ -89,6 +97,10 @@ export const initialSales: Sale[] = [
     total: 139.99,
 
     status: "CONFIRMED",
+
+    paymentMethod: "CASH",
+
+    paymentStatus: "PENDING",
 
     shipping: {
       recipientName: "Julián Fernández",

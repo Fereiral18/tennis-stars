@@ -1,12 +1,28 @@
 import {
   Eye,
+  MoreHorizontal,
   Package,
+  PackageCheck,
+  Truck,
+  XCircle,
 } from "lucide-react";
 
 import {
   DataTable,
   type DataTableColumn,
 } from "@/components/shared/DataTable";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import {
+  paymentStatusConfig,
+  saleStatusConfig,
+} from "../constants/status";
 
 import type {
   Sale,
@@ -18,49 +34,16 @@ interface SaleTableProps {
   onViewShipping: (
     sale: Sale,
   ) => void;
+  onUpdateStatus: (
+    sale: Sale,
+    status: SaleStatus,
+  ) => void;
 }
-
-const statusConfig: Record<
-  SaleStatus,
-  {
-    label: string;
-    className: string;
-  }
-> = {
-  PENDING: {
-    label: "Pendiente",
-    className:
-      "bg-yellow-100 text-yellow-700",
-  },
-
-  CONFIRMED: {
-    label: "Confirmada",
-    className:
-      "bg-blue-100 text-blue-700",
-  },
-
-  SHIPPED: {
-    label: "Enviada",
-    className:
-      "bg-purple-100 text-purple-700",
-  },
-
-  DELIVERED: {
-    label: "Entregada",
-    className:
-      "bg-green-100 text-green-700",
-  },
-
-  CANCELLED: {
-    label: "Cancelada",
-    className:
-      "bg-red-100 text-red-700",
-  },
-};
 
 export function SaleTable({
   sales,
   onViewShipping,
+  onUpdateStatus,
 }: SaleTableProps) {
   const formatCurrency = (
     value: number,
@@ -165,7 +148,7 @@ export function SaleTable({
 
         render: (sale) => {
           const status =
-            statusConfig[
+            saleStatusConfig[
               sale.status
             ];
 
@@ -174,6 +157,26 @@ export function SaleTable({
               className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${status.className}`}
             >
               {status.label}
+            </span>
+          );
+        },
+      },
+
+      {
+        key: "payment",
+        header: "Pago",
+
+        render: (sale) => {
+          const payment =
+            paymentStatusConfig[
+              sale.paymentStatus
+            ];
+
+          return (
+            <span
+              className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${payment.className}`}
+            >
+              {payment.label}
             </span>
           );
         },
@@ -195,8 +198,73 @@ export function SaleTable({
           >
             <Eye className="h-3.5 w-3.5" />
 
-            Ver envío
+            Ver pedido
           </button>
+        ),
+      },
+
+      {
+        key: "actions",
+        header: "",
+        className: "w-16 text-right",
+
+        render: (sale) => (
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className="rounded-md p-2 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-900"
+              aria-label={`Cambiar estado de ${sale.id}`}
+            >
+              <MoreHorizontal className="h-4 w-4" />
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem
+                disabled={
+                  sale.status === "PREPARING"
+                }
+                onClick={() =>
+                  onUpdateStatus(
+                    sale,
+                    "PREPARING",
+                  )
+                }
+              >
+                <PackageCheck className="mr-2 h-4 w-4" />
+                En preparación
+              </DropdownMenuItem>
+
+              <DropdownMenuItem
+                disabled={
+                  sale.status === "SHIPPED"
+                }
+                onClick={() =>
+                  onUpdateStatus(
+                    sale,
+                    "SHIPPED",
+                  )
+                }
+              >
+                <Truck className="mr-2 h-4 w-4" />
+                Enviado
+              </DropdownMenuItem>
+
+              <DropdownMenuItem
+                disabled={
+                  sale.status === "CANCELLED"
+                }
+                onClick={() =>
+                  onUpdateStatus(
+                    sale,
+                    "CANCELLED",
+                  )
+                }
+                className="text-red-600 focus:text-red-600"
+              >
+                <XCircle className="mr-2 h-4 w-4" />
+                Cancelado
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         ),
       },
     ];
