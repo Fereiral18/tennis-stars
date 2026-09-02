@@ -1,6 +1,5 @@
 import {
   BarChart3,
-  Boxes,
   LayoutDashboard,
   LogOut,
   Package,
@@ -8,7 +7,9 @@ import {
   X,
 } from "lucide-react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
+import { authService } from "@/features/auth/services/auth.service";
 
 interface SidebarProps {
   onClose?: () => void;
@@ -40,6 +41,13 @@ const navigation = [
 export function Sidebar({
   onClose,
 }: SidebarProps) {
+  const navigate = useNavigate();
+
+  function handleLogout(): void {
+    authService.logout();
+    navigate("/login", { replace: true });
+  }
+
   return (
     <aside className="flex h-full w-72 flex-col border-r border-zinc-200 bg-white">
       <div className="flex h-16 items-center justify-between border-b border-zinc-100 px-5">
@@ -120,6 +128,7 @@ export function Sidebar({
 
         <button
           type="button"
+          onClick={handleLogout}
           className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-950"
         >
           <LogOut className="h-4 w-4" />
