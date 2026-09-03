@@ -1,7 +1,17 @@
-import { useMemo } from "react";
-import { useCategories } from "@/features/categories/hooks/useCategories";
+import { useCallback, useEffect, useState } from "react";
+
 import { useProducts } from "@/features/products/hooks/useProducts";
-import { useSales } from "@/features/sales/hooks/useSales";
+import { dashboardService } from "../services/dashboard.service";
+
+import type { DashboardSummary } from "../types/dashboard.types";
+
+const EMPTY_METRICS: DashboardSummary = {
+  totalProducts: 0,
+  totalCategories: 0,
+  totalSales: 0,
+  totalRevenue: 0,
+  recentSales: [],
+};
 
 export function useDashboard() {
   const {
@@ -9,51 +19,46 @@ export function useDashboard() {
     isLoading: isProductsLoading,
   } = useProducts();
 
-  const {
-    categories,
-    isLoading: isCategoriesLoading,
-  } = useCategories();
+  const [summary, setSummary] =
+    useState<DashboardSummary>(EMPTY_METRICS);
 
-  const {
-    sales,
-    isLoading: isSalesLoading,
-  } = useSales(products);
+  const [isSummaryLoading, setIsSummaryLoading] =
+    useState(true);
 
-  const metrics = useMemo(() => {
-    const totalRevenue = sales.reduce(
-      (total, sale) => total + sale.total,
-      0,
-    );
+  const [isError, setIsError] = useState(false);
 
-    return {
-      totalProducts: products.length,
-      totalCategories: categories.length,
-      totalSales: sales.length,
-      totalRevenue,
+  const fetchSummary = useCallback((): (() => void) => {
+    let cancelled = false;
+
+    dashboardService
+      .getSummary()
+      .then((data) => {
+        if (cancelled) return;
+
+        setSummary(data);
+        setIsError(false);
+      })
+      .catch(() => {
+        if (!cancelled) setIsError(true);
+      })
+      .finally(() => {
+        if (!cancelled) setIsSummaryLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
     };
-  }, [products, categories, sales]);
+  }, []);
 
-  const recentSales = useMemo(() => {
-    return [...sales]
-      .sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() -
-          new Date(a.createdAt).getTime(),
-      )
-      .slice(0, 5);
-  }, [sales]);
+  useEffect(() => fetchSummary(), [fetchSummary]);
 
-  const isLoading =
-    isProductsLoading ||
-    isCategoriesLoading ||
-    isSalesLoading;
+  const { recentSales, ...metrics } = summary;
 
   return {
     products,
-    categories,
-    sales,
     recentSales,
     metrics,
-    isLoading,
+    isLoading: isProductsLoading || isSummaryLoading,
+    isError,
   };
 }

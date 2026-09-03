@@ -64,7 +64,7 @@ export function SalesPage() {
 
     isCreating,
     isUpdatingPayment,
-  } = useSales(products);
+  } = useSales();
 
   const [
     isSaleDialogOpen,

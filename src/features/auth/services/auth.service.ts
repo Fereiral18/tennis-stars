@@ -1,51 +1,26 @@
+import { api } from "@/lib/axios";
+import { getStorage, removeStorage, setStorage } from "@/lib/storage";
+import { STORAGE_KEYS } from "@/lib/constants";
+
 import type {
   AuthResponse,
-  LoginCredentials,
   AuthUser,
+  LoginCredentials,
 } from "../types/auth.types";
-import { getStorage, removeStorage, setStorage } from "../../../mocks/storage/mockStorage";
-import { STORAGE_KEYS } from "../../../lib/constants";
-
-const MOCK_CREDENTIALS = {
-  email: "admin@courtstore.com",
-  password: "123456",
-};
-
-const MOCK_USER: AuthUser = {
-  id: "user-001",
-  name: "Administrador",
-  email: MOCK_CREDENTIALS.email,
-};
-
-function delay(ms = 500): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
 
 export const authService = {
   async login(
     credentials: LoginCredentials,
   ): Promise<AuthResponse> {
-    await delay();
+    const { data } = await api.post<AuthResponse>(
+      "/auth/login",
+      credentials,
+    );
 
-    const isValid =
-      credentials.email === MOCK_CREDENTIALS.email &&
-      credentials.password === MOCK_CREDENTIALS.password;
+    setStorage(STORAGE_KEYS.AUTH_TOKEN, data.token);
+    setStorage(STORAGE_KEYS.AUTH_USER, data.user);
 
-    if (!isValid) {
-      throw new Error("Email o contraseña incorrectos");
-    }
-
-    const response: AuthResponse = {
-      token: "mock-auth-token",
-      user: MOCK_USER,
-    };
-
-    setStorage(STORAGE_KEYS.AUTH_TOKEN, response.token);
-    setStorage(STORAGE_KEYS.AUTH_USER, response.user);
-
-    return response;
+    return data;
   },
 
   logout(): void {

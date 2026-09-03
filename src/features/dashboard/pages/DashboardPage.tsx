@@ -13,6 +13,7 @@ import { useDashboard } from "../hooks/useDashboard";
 
 import { PageHeader } from "@/components/shared/PageHeader";
 import { LoadingState } from "@/components/shared/LoadingState";
+import { EmptyState } from "@/components/shared/EmptyState";
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -22,10 +23,27 @@ export function DashboardPage() {
     recentSales,
     metrics,
     isLoading,
+    isError,
   } = useDashboard();
 
   if (isLoading) {
     return <LoadingState />;
+  }
+
+  if (isError) {
+    return (
+      <div className="space-y-6">
+        <PageHeader
+          title="Dashboard"
+          description="Resumen general de Court Store"
+        />
+
+        <EmptyState
+          title="No fue posible cargar el dashboard"
+          description="Ocurrió un error al consultar los datos."
+        />
+      </div>
+    );
   }
 
   return (

@@ -9,8 +9,6 @@ import type {
   SaleStatus,
 } from "../types/sale.types";
 
-import type { Product } from "@/features/products/types/product.types";
-
 interface UseSalesReturn {
   sales: Sale[];
   isLoading: boolean;
@@ -29,7 +27,7 @@ interface UseSalesReturn {
   isUpdatingPayment: boolean;
 }
 
-export function useSales(products: Product[]): UseSalesReturn {
+export function useSales(): UseSalesReturn {
   const [sales, setSales] = useState<Sale[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -69,7 +67,7 @@ export function useSales(products: Product[]): UseSalesReturn {
       try {
         setIsCreating(true);
 
-        const sale = await saleService.create(input, products);
+        const sale = await saleService.create(input);
 
         setSales((previous) => [...previous, sale]);
 
@@ -78,7 +76,7 @@ export function useSales(products: Product[]): UseSalesReturn {
         setIsCreating(false);
       }
     },
-    [products],
+    [],
   );
 
   const updateSaleStatus = useCallback(
