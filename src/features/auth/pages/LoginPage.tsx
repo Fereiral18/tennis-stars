@@ -113,7 +113,7 @@ export function LoginPage() {
 
                   <div>
                     <span className="block text-lg font-bold tracking-tight text-white">
-                      Court Store
+                      Tennis Stars
                     </span>
 
                     <span className="block text-[9px] font-medium uppercase tracking-[0.28em] text-white/55">

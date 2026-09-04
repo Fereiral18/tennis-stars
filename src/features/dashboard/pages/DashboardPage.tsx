@@ -167,7 +167,7 @@ export function DashboardPage() {
                     text-[#C1C5C9]
                   "
                 >
-                  Court Store
+                 Tennis Stars
                 </span>
               </div>
 
