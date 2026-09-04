@@ -6,6 +6,9 @@ import type {
   AuthResponse,
   AuthUser,
   LoginCredentials,
+  ResetPasswordCredentials,
+  SecurityAnswers,
+  VerificationTokenResponse,
 } from "../types/auth.types";
 
 export const authService = {
@@ -21,6 +24,23 @@ export const authService = {
     setStorage(STORAGE_KEYS.AUTH_USER, data.user);
 
     return data;
+  },
+
+  async verifySecurityAnswers(
+    answers: SecurityAnswers,
+  ): Promise<VerificationTokenResponse> {
+    const { data } = await api.post<VerificationTokenResponse>(
+      "/auth/verify-security-answers",
+      answers,
+    );
+
+    return data;
+  },
+
+  async resetPassword(
+    credentials: ResetPasswordCredentials,
+  ): Promise<void> {
+    await api.patch("/auth/reset-password", credentials);
   },
 
   logout(): void {

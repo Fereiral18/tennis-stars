@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { LoginForm } from "../components/LoginForm";
 import { useAuth } from "../hooks/useAuth";
@@ -83,6 +83,15 @@ export function LoginPage() {
               isLoading={isLoading}
               error={error}
             />
+
+            <p className="mt-4 text-center text-sm">
+              <Link
+                to="/reset-password"
+                className="font-medium text-zinc-600 underline-offset-4 hover:text-zinc-950 hover:underline"
+              >
+                ¿Olvidaste tu contraseña?
+              </Link>
+            </p>
 
             <div className="mt-6 rounded-lg bg-zinc-50 p-4 text-xs text-zinc-500">
               <p className="font-medium text-zinc-700">
