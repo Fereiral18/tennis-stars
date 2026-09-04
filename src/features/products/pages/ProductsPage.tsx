@@ -307,7 +307,7 @@ export function ProductsPage() {
             rounded-3xl
             border
             border-[#292E34]
-            bg-[#181B1F]
+            bg-[#101214]
             shadow-[0_12px_30px_rgba(0,0,0,0.14)]
           "
         >
