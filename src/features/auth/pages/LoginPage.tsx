@@ -102,7 +102,7 @@ export function LoginPage() {
                 admin@courtstore.com
               </p>
 
-              <p>123456</p>
+              <p>solicitar contraseña</p>
             </div>
           </div>
         </section>
