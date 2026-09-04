@@ -217,7 +217,7 @@ export function ProductTable({
     {
       key: "actions",
       header: "",
-      className: "w-16 text-right",
+      className: "w-16 text-right  bg-[#101214]",
       render: (product) => (
         <DropdownMenu>
           <DropdownMenuTrigger
