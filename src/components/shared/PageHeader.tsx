@@ -12,21 +12,69 @@ export function PageHeader({
   action,
 }: PageHeaderProps) {
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight text-zinc-950">
-          {title}
-        </h1>
+    <div
+      className="
+        flex
+        flex-col
+        gap-5
+        sm:flex-row
+        sm:items-center
+        sm:justify-between
+      "
+    >
+      {/* Información de la página */}
+      <div className="min-w-0">
+        <div className="flex items-center gap-3">
+          <span
+            className="
+              h-7
+              w-1
+              shrink-0
+              rounded-full
+              bg-[#D6A46A]
+              shadow-[0_0_10px_rgba(214,164,106,0.18)]
+            "
+          />
+
+          <h1
+            className="
+              text-2xl
+              font-semibold
+              tracking-tight
+              text-[#F5F5F2]
+              sm:text-[1.65rem]
+            "
+          >
+            {title}
+          </h1>
+        </div>
 
         {description && (
-          <p className="mt-1 text-sm text-zinc-500">
+          <p
+            className="
+              mt-2
+              max-w-2xl
+              pl-4
+              text-sm
+              leading-6
+              text-[#7F878F]
+            "
+          >
             {description}
           </p>
         )}
       </div>
 
+      {/* Acción */}
       {action && (
-        <div className="flex items-center gap-2">
+        <div
+          className="
+            flex
+            shrink-0
+            items-center
+            gap-2
+          "
+        >
           {action}
         </div>
       )}
