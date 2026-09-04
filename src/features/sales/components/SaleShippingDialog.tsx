@@ -21,6 +21,8 @@ import {
   saleStatusConfig,
 } from "../constants/status";
 
+import { formatSaleCode } from "../utils/formatSaleCode";
+
 import type { Sale } from "../types/sale.types";
 
 interface ShippingDialogProps {
@@ -79,8 +81,11 @@ export function ShippingDialog({
         <div className="space-y-4">
           <div className="flex items-center justify-between rounded-lg bg-zinc-50 p-4">
             <div>
-              <p className="text-xs text-zinc-500">
-                {sale.id}
+              <p
+                className="font-mono text-xs text-zinc-500"
+                title={sale.id}
+              >
+                {formatSaleCode(sale.id)}
               </p>
 
               <p className="mt-1 text-sm font-medium text-zinc-900">

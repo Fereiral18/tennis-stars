@@ -204,9 +204,15 @@ export function SalesPage() {
     isProductsLoading ||
     isSalesLoading;
 
+  const pageWrapperClassName =
+    "min-h-full space-y-6 bg-[#101214] p-4 text-[#F5F5F2] sm:p-6 lg:p-8";
+
+  const createButtonClassName =
+    "group inline-flex items-center justify-center gap-2 rounded-xl border border-[#574936] bg-[#D6A46A] px-4 py-2.5 text-sm font-semibold text-[#171411] shadow-[0_8px_20px_rgba(0,0,0,0.16)] transition-all duration-200 hover:border-[#6A5841] hover:bg-[#E0B77F] hover:shadow-[0_12px_26px_rgba(0,0,0,0.22)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100";
+
   if (isLoading) {
     return (
-      <div className="space-y-6">
+      <div className={pageWrapperClassName}>
         <PageHeader
           title="Ventas"
           description="Consultá y registrá las ventas de Court Store."
@@ -219,22 +225,24 @@ export function SalesPage() {
 
   if (isSalesError) {
     return (
-      <div className="space-y-6">
+      <div className={pageWrapperClassName}>
         <PageHeader
           title="Ventas"
           description="Consultá y registrá las ventas de Court Store."
         />
 
-        <EmptyState
-          title="No fue posible cargar las ventas"
-          description="Ocurrió un error al consultar los datos."
-        />
+        <div className="overflow-hidden rounded-3xl border border-[#3D3435] bg-[#181B1F] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+          <EmptyState
+            title="No fue posible cargar las ventas"
+            description="Ocurrió un error al consultar los datos."
+          />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className={pageWrapperClassName}>
       <PageHeader
         title="Ventas"
         description="Consultá y registrá las ventas de Court Store."
@@ -248,9 +256,9 @@ export function SalesPage() {
               products.length ===
               0
             }
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-zinc-950 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50"
+            className={createButtonClassName}
           >
-            <Plus className="h-4 w-4" />
+            <Plus className="h-4 w-4 transition-transform duration-200 group-hover:rotate-90" />
 
             Generar venta
           </button>
@@ -258,38 +266,44 @@ export function SalesPage() {
       />
 
       {products.length === 0 ? (
-        <EmptyState
-          title="No hay productos disponibles"
-          description="Necesitás crear al menos un producto antes de generar una venta."
-        />
+        <div className="overflow-hidden rounded-3xl border border-dashed border-[#343A40] bg-[#181B1F] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+          <EmptyState
+            title="No hay productos disponibles"
+            description="Necesitás crear al menos un producto antes de generar una venta."
+          />
+        </div>
       ) : sales.length === 0 ? (
-        <EmptyState
-          title="No hay ventas"
-          description="Generá tu primera venta para comenzar a registrar operaciones."
-          action={
-            <button
-              type="button"
-              onClick={
-                handleCreateSale
-              }
-              className="inline-flex items-center gap-2 rounded-md bg-zinc-950 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800"
-            >
-              <Plus className="h-4 w-4" />
+        <div className="overflow-hidden rounded-3xl border border-dashed border-[#343A40] bg-[#181B1F] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+          <EmptyState
+            title="No hay ventas"
+            description="Generá tu primera venta para comenzar a registrar operaciones."
+            action={
+              <button
+                type="button"
+                onClick={
+                  handleCreateSale
+                }
+                className="inline-flex items-center gap-2 rounded-xl border border-[#574936] bg-[#D6A46A] px-4 py-2 text-sm font-semibold text-[#171411] transition hover:bg-[#E0B77F]"
+              >
+                <Plus className="h-4 w-4" />
 
-              Generar venta
-            </button>
-          }
-        />
+                Generar venta
+              </button>
+            }
+          />
+        </div>
       ) : (
-        <SaleTable
-          sales={sales}
-          onViewShipping={
-            handleViewShipping
-          }
-          onUpdateStatus={
-            handleUpdateStatus
-          }
-        />
+        <div className="overflow-hidden rounded-3xl border border-[#292E34] bg-[#101214] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+          <SaleTable
+            sales={sales}
+            onViewShipping={
+              handleViewShipping
+            }
+            onUpdateStatus={
+              handleUpdateStatus
+            }
+          />
+        </div>
       )}
 
       <SaleDialog

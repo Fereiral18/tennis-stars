@@ -11,6 +11,7 @@ import { DashboardPage } from "../features/dashboard/pages/DashboardPage";
 import { CategoriesPage } from "../features/categories/pages/CategoriesPages";
 import { ProductsPage } from "../features/products/pages/ProductsPage";
 import { SalesPage } from "../features/sales/pages/SalesPage";
+import { CustomersPage } from "../features/customers/pages/CustomersPage";
 
 
 
@@ -86,6 +87,11 @@ export const router = createBrowserRouter([
           {
             path: "/sales",
             element: <SalesPage />,
+          },
+
+          {
+            path: "/customers",
+            element: <CustomersPage />,
           },
         ],
       },
