@@ -44,7 +44,7 @@ export function ProductTable({
     {
       key: "product",
       header: "Producto",
-      className: "min-w-[320px]",
+      className: "min-w-[320px] bg-[#101214]",
       render: (product) => (
         <div className="group flex min-w-[280px] items-center gap-3.5  ">
           {/* Imagen */}
