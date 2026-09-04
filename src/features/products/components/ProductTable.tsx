@@ -133,6 +133,7 @@ export function ProductTable({
     {
       key: "category",
       header: "Categoría",
+       className: "bg-[#101214]",
       render: (product) => {
         const categoryName = getCategoryName(product.categoryId);
         const hasCategory = categoryName !== "Sin categoría";
@@ -174,6 +175,7 @@ export function ProductTable({
     {
       key: "price",
       header: "Precio",
+       className: "bg-[#101214]",
       render: (product) => (
         <span
           className="
@@ -195,6 +197,7 @@ export function ProductTable({
     {
       key: "createdAt",
       header: "Creado",
+       className: "bg-[#101214]",
       render: (product) => (
         <span
           className="
