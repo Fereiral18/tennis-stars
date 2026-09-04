@@ -16,7 +16,6 @@ import {
   type DataTableColumn,
 } from "@/components/shared/DataTable";
 
-
 import type { Product } from "../types/product.types";
 import type { Category } from "@/features/categories/types/category.schema";
 
@@ -33,13 +32,10 @@ export function ProductTable({
   onEdit,
   onDelete,
 }: ProductTableProps) {
-  function getCategoryName(
-    categoryId: string,
-  ): string {
+  function getCategoryName(categoryId: string): string {
     return (
       categories.find(
-        (category) =>
-          category.id === categoryId,
+        (category) => category.id === categoryId,
       )?.name ?? "Sin categoría"
     );
   }
@@ -48,28 +44,80 @@ export function ProductTable({
     {
       key: "product",
       header: "Producto",
-
       render: (product) => (
-        <div className="flex min-w-[240px] items-center gap-3">
-          <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100">
+        <div className="flex min-w-[280px] items-center gap-3.5">
+          {/* Product image */}
+          <div
+            className="
+              relative
+              h-12
+              w-12
+              shrink-0
+              overflow-hidden
+              rounded-xl
+              border
+              border-[#343A40]
+              bg-[#20242A]
+              shadow-[0_6px_16px_rgba(0,0,0,0.14)]
+            "
+          >
             <img
               src={product.imageUrl}
               alt={product.name}
-              className="h-full w-full object-cover"
+              className="
+                h-full
+                w-full
+                object-cover
+                transition-transform
+                duration-300
+                hover:scale-105
+              "
               onError={(event) => {
                 event.currentTarget.src =
                   "https://placehold.co/100x100?text=Product";
               }}
             />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+                rounded-xl
+                ring-1
+                ring-inset
+                ring-white/[0.04]
+              "
+            />
           </div>
 
+          {/* Product information */}
           <div className="min-w-0">
-            <p className="truncate font-medium text-zinc-900">
+            <p
+              className="
+                truncate
+                text-sm
+                font-semibold
+                text-[#EDEEEB]
+                transition-colors
+                duration-200
+                hover:text-[#F5F5F2]
+              "
+            >
               {product.name}
             </p>
 
-            <p className="mt-0.5 max-w-[280px] truncate text-xs text-zinc-500">
-              {product.description}
+            <p
+              className="
+                mt-1
+                max-w-[300px]
+                truncate
+                text-[11px]
+                leading-5
+                text-[#656D75]
+              "
+            >
+              {product.description || "Sin descripción"}
             </p>
           </div>
         </div>
@@ -79,29 +127,58 @@ export function ProductTable({
     {
       key: "category",
       header: "Categoría",
+      render: (product) => {
+        const categoryName = getCategoryName(product.categoryId);
+        const hasCategory = categoryName !== "Sin categoría";
 
-      render: (product) => (
-        <span className="inline-flex rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-700">
-          {getCategoryName(
-            product.categoryId,
-          )}
-        </span>
-      ),
+        return (
+          <span
+            className={`
+              inline-flex
+              items-center
+              rounded-lg
+              border
+              px-2.5
+              py-1.5
+              text-[11px]
+              font-semibold
+              ${
+                hasCategory
+                  ? `
+                    border-[#40382F]
+                    bg-[#29231D]
+                    text-[#D0AE82]
+                  `
+                  : `
+                    border-[#343A40]
+                    bg-[#20242A]
+                    text-[#737B83]
+                  `
+              }
+            `}
+          >
+            {categoryName}
+          </span>
+        );
+      },
     },
 
     {
       key: "price",
       header: "Precio",
-
       render: (product) => (
-        <span className="font-semibold text-zinc-900">
-          {new Intl.NumberFormat(
-            "es-AR",
-            {
-              style: "currency",
-              currency: "USD",
-            },
-          ).format(product.price)}
+        <span
+          className="
+            text-sm
+            font-semibold
+            tracking-tight
+            text-[#E8C79F]
+          "
+        >
+          {new Intl.NumberFormat("es-AR", {
+            style: "currency",
+            currency: "USD",
+          }).format(product.price)}
         </span>
       ),
     },
@@ -109,49 +186,106 @@ export function ProductTable({
     {
       key: "createdAt",
       header: "Creado",
-
-      render: (product) =>
-        new Intl.DateTimeFormat(
-          "es-AR",
-          {
+      render: (product) => (
+        <span
+          className="
+            whitespace-nowrap
+            text-xs
+            font-medium
+            text-[#858D95]
+          "
+        >
+          {new Intl.DateTimeFormat("es-AR", {
             dateStyle: "medium",
-          },
-        ).format(
-          new Date(product.createdAt),
-        ),
+          }).format(new Date(product.createdAt))}
+        </span>
+      ),
     },
 
     {
       key: "actions",
       header: "",
       className: "w-16 text-right",
-
       render: (product) => (
         <DropdownMenu>
           <DropdownMenuTrigger
-            className="rounded-md p-2 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-900"
+            className="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-xl
+              border
+              border-transparent
+              bg-transparent
+              text-[#737B83]
+              outline-none
+              transition-all
+              duration-200
+              hover:border-[#343A40]
+              hover:bg-[#20242A]
+              hover:text-[#EDEEEB]
+              focus-visible:border-[#4A5057]
+              focus-visible:ring-2
+              focus-visible:ring-[#D6A46A]/20
+            "
             aria-label={`Acciones para ${product.name}`}
           >
-            <MoreHorizontal className="h-4 w-4" />
+            <MoreHorizontal className="h-[18px] w-[18px]" />
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent
+            align="end"
+            sideOffset={6}
+            className="
+              min-w-[170px]
+              rounded-xl
+              border
+              border-[#343A40]
+              bg-[#181B1F]
+              p-1.5
+              text-[#EDEEEB]
+              shadow-[0_18px_40px_rgba(0,0,0,0.35)]
+            "
+          >
             <DropdownMenuItem
-              onClick={() =>
-                onEdit(product)
-              }
+              onClick={() => onEdit(product)}
+              className="
+                cursor-pointer
+                rounded-lg
+                px-3
+                py-2.5
+                text-xs
+                font-medium
+                text-[#AEB4B9]
+                outline-none
+                transition-colors
+                focus:bg-[#20242A]
+                focus:text-[#F1F2EF]
+              "
             >
-              <Edit className="mr-2 h-4 w-4" />
+              <Edit className="mr-2.5 h-4 w-4 text-[#8B9299]" />
               Editar
             </DropdownMenuItem>
 
             <DropdownMenuItem
-              onClick={() =>
-                onDelete(product)
-              }
-              className="text-red-600 focus:text-red-600"
+              onClick={() => onDelete(product)}
+              className="
+                cursor-pointer
+                rounded-lg
+                px-3
+                py-2.5
+                text-xs
+                font-medium
+                text-[#C99A9D]
+                outline-none
+                transition-colors
+                focus:bg-[#281E20]
+                focus:text-[#D8A4A7]
+              "
             >
-              <Trash2 className="mr-2 h-4 w-4" />
+              <Trash2 className="mr-2.5 h-4 w-4" />
               Eliminar
             </DropdownMenuItem>
           </DropdownMenuContent>
