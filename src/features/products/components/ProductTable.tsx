@@ -44,9 +44,9 @@ export function ProductTable({
     {
       key: "product",
       header: "Producto",
-
+      className: "min-w-[320px]",
       render: (product) => (
-        <div className="flex min-w-[280px] items-center gap-3.5">
+        <div className="group flex min-w-[280px] items-center gap-3.5">
           {/* Imagen */}
           <div
             className="
@@ -60,6 +60,10 @@ export function ProductTable({
               border-[#343A40]
               bg-[#20242A]
               shadow-[0_6px_16px_rgba(0,0,0,0.14)]
+              transition-all
+              duration-300
+              group-hover:border-[#40382F]
+              group-hover:shadow-[0_8px_20px_rgba(0,0,0,0.22)]
             "
           >
             <img
@@ -87,7 +91,7 @@ export function ProductTable({
                 rounded-xl
                 ring-1
                 ring-inset
-                ring-white/[0.04]
+                ring-white/[0.05]
               "
             />
           </div>
@@ -99,9 +103,11 @@ export function ProductTable({
                 truncate
                 text-sm
                 font-semibold
+                tracking-tight
                 text-[#EDEEEB]
                 transition-colors
                 duration-200
+                group-hover:text-[#F5F5F2]
               "
             >
               {product.name}
@@ -127,14 +133,9 @@ export function ProductTable({
     {
       key: "category",
       header: "Categoría",
-
       render: (product) => {
-        const categoryName = getCategoryName(
-          product.categoryId,
-        );
-
-        const hasCategory =
-          categoryName !== "Sin categoría";
+        const categoryName = getCategoryName(product.categoryId);
+        const hasCategory = categoryName !== "Sin categoría";
 
         return (
           <span
@@ -147,7 +148,7 @@ export function ProductTable({
               py-1.5
               text-[11px]
               font-semibold
-              transition-colors
+              transition-all
               duration-200
               ${
                 hasCategory
@@ -173,7 +174,6 @@ export function ProductTable({
     {
       key: "price",
       header: "Precio",
-
       render: (product) => (
         <span
           className="
@@ -195,7 +195,6 @@ export function ProductTable({
     {
       key: "createdAt",
       header: "Creado",
-
       render: (product) => (
         <span
           className="
@@ -216,7 +215,6 @@ export function ProductTable({
       key: "actions",
       header: "",
       className: "w-16 text-right",
-
       render: (product) => (
         <DropdownMenu>
           <DropdownMenuTrigger
@@ -250,7 +248,7 @@ export function ProductTable({
             align="end"
             sideOffset={6}
             className="
-              min-w-[170px]
+              min-w-[175px]
               rounded-xl
               border
               border-[#343A40]
@@ -271,7 +269,8 @@ export function ProductTable({
                 font-medium
                 text-[#AEB4B9]
                 outline-none
-                transition-colors
+                transition-all
+                duration-200
                 focus:bg-[#20242A]
                 focus:text-[#F1F2EF]
               "
@@ -282,9 +281,11 @@ export function ProductTable({
                   h-4
                   w-4
                   text-[#8B9299]
+                  transition-colors
+                  duration-200
+                  group-hover:text-[#D6A46A]
                 "
               />
-
               Editar
             </DropdownMenuItem>
 
@@ -299,7 +300,8 @@ export function ProductTable({
                 font-medium
                 text-[#C99A9D]
                 outline-none
-                transition-colors
+                transition-all
+                duration-200
                 focus:bg-[#281E20]
                 focus:text-[#D8A4A7]
               "
@@ -309,9 +311,9 @@ export function ProductTable({
                   mr-2.5
                   h-4
                   w-4
+                  text-[#C99A9D]
                 "
               />
-
               Eliminar
             </DropdownMenuItem>
           </DropdownMenuContent>
