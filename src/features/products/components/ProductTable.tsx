@@ -44,9 +44,10 @@ export function ProductTable({
     {
       key: "product",
       header: "Producto",
+
       render: (product) => (
         <div className="flex min-w-[280px] items-center gap-3.5">
-          {/* Product image */}
+          {/* Imagen */}
           <div
             className="
               relative
@@ -70,7 +71,7 @@ export function ProductTable({
                 object-cover
                 transition-transform
                 duration-300
-                hover:scale-105
+                group-hover:scale-105
               "
               onError={(event) => {
                 event.currentTarget.src =
@@ -91,7 +92,7 @@ export function ProductTable({
             />
           </div>
 
-          {/* Product information */}
+          {/* Información */}
           <div className="min-w-0">
             <p
               className="
@@ -101,7 +102,6 @@ export function ProductTable({
                 text-[#EDEEEB]
                 transition-colors
                 duration-200
-                hover:text-[#F5F5F2]
               "
             >
               {product.name}
@@ -127,9 +127,14 @@ export function ProductTable({
     {
       key: "category",
       header: "Categoría",
+
       render: (product) => {
-        const categoryName = getCategoryName(product.categoryId);
-        const hasCategory = categoryName !== "Sin categoría";
+        const categoryName = getCategoryName(
+          product.categoryId,
+        );
+
+        const hasCategory =
+          categoryName !== "Sin categoría";
 
         return (
           <span
@@ -142,6 +147,8 @@ export function ProductTable({
               py-1.5
               text-[11px]
               font-semibold
+              transition-colors
+              duration-200
               ${
                 hasCategory
                   ? `
@@ -166,9 +173,11 @@ export function ProductTable({
     {
       key: "price",
       header: "Precio",
+
       render: (product) => (
         <span
           className="
+            whitespace-nowrap
             text-sm
             font-semibold
             tracking-tight
@@ -186,6 +195,7 @@ export function ProductTable({
     {
       key: "createdAt",
       header: "Creado",
+
       render: (product) => (
         <span
           className="
@@ -206,6 +216,7 @@ export function ProductTable({
       key: "actions",
       header: "",
       className: "w-16 text-right",
+
       render: (product) => (
         <DropdownMenu>
           <DropdownMenuTrigger
@@ -265,7 +276,15 @@ export function ProductTable({
                 focus:text-[#F1F2EF]
               "
             >
-              <Edit className="mr-2.5 h-4 w-4 text-[#8B9299]" />
+              <Edit
+                className="
+                  mr-2.5
+                  h-4
+                  w-4
+                  text-[#8B9299]
+                "
+              />
+
               Editar
             </DropdownMenuItem>
 
@@ -285,7 +304,14 @@ export function ProductTable({
                 focus:text-[#D8A4A7]
               "
             >
-              <Trash2 className="mr-2.5 h-4 w-4" />
+              <Trash2
+                className="
+                  mr-2.5
+                  h-4
+                  w-4
+                "
+              />
+
               Eliminar
             </DropdownMenuItem>
           </DropdownMenuContent>
