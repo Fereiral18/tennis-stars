@@ -28,7 +28,7 @@ export function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F1EB] px-4 py-6 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[#101214] px-4 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto flex min-h-[calc(100vh-3rem)] w-full max-w-7xl items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
