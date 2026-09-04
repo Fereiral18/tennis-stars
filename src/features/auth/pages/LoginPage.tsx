@@ -85,7 +85,10 @@ export function LoginPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 }}
               >
-                <Link to="/" className="group inline-flex items-center gap-3">
+                <Link
+                  to="/"
+                  className="group inline-flex items-center gap-3"
+                >
                   <div
                     className="
                       flex
@@ -143,8 +146,8 @@ export function LoginPage() {
                 </h1>
 
                 <p className="mt-6 max-w-md text-sm leading-7 text-white/65 xl:text-base">
-                  Descubrí una selección de calzado pensada para quienes buscan
-                  comodidad, personalidad y estilo en cada paso.
+                  Descubrí una selección de calzado pensada para quienes
+                  buscan comodidad, personalidad y estilo en cada paso.
                 </p>
 
                 {/* Features */}
@@ -219,7 +222,10 @@ export function LoginPage() {
                 transition={{ duration: 0.45 }}
                 className="mb-12 lg:hidden"
               >
-                <Link to="/" className="inline-flex items-center gap-3">
+                <Link
+                  to="/"
+                  className="inline-flex items-center gap-3"
+                >
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#403B35] text-base font-black text-[#F5EBDD] shadow-md">
                     C
                   </div>
@@ -261,7 +267,8 @@ export function LoginPage() {
                 </h2>
 
                 <p className="mt-3 max-w-sm text-sm leading-6 text-[#403B35]/55">
-                  Ingresá a tu cuenta para continuar gestionando Court Store.
+                  Ingresá a tu cuenta para continuar gestionando
+                  Court Store.
                 </p>
               </motion.div>
 
@@ -313,6 +320,7 @@ export function LoginPage() {
                   "
                 >
                   ¿Olvidaste tu contraseña?
+
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </Link>
               </motion.div>
@@ -348,7 +356,9 @@ export function LoginPage() {
                   </div>
 
                   <div className="px-4 py-3 font-mono text-xs">
-                    <p className="text-[#403B35]/70">admin@courtstore.com</p>
+                    <p className="text-[#403B35]/70">
+                      admin@courtstore.com
+                    </p>
 
                     <p className="mt-1 text-[#403B35]/35">
                       solicitar contraseña
@@ -372,7 +382,9 @@ export function LoginPage() {
               >
                 <ShieldCheck className="h-3.5 w-3.5" />
 
-                <span>Tus datos están protegidos</span>
+                <span>
+                  Tus datos están protegidos
+                </span>
               </motion.div>
             </div>
           </section>
