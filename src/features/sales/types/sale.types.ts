@@ -1,4 +1,5 @@
 import type { BaseEntity } from "@/types/common.types";
+import type { Gender } from "@/features/products/types/product.types";
 
 export type SaleStatus =
   | "PENDING"
@@ -29,6 +30,9 @@ export interface ShippingInfo {
 export interface SaleItem {
   productId: string;
   productName: string;
+  gender: Gender;
+  color: string | null;
+  size: string | null;
   quantity: number;
   unitPrice: number;
   subtotal: number;
@@ -51,5 +55,7 @@ export interface CreateSaleInput {
   productId: string;
   quantity: number;
   paymentMethod: PaymentMethod;
+  color?: string;
+  size?: string;
   shipping: ShippingInfo;
 }

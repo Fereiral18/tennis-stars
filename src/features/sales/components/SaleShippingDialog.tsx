@@ -3,6 +3,7 @@ import {
   Loader2,
   Mail,
   MapPin,
+  Package,
   Phone,
   User,
   Wallet,
@@ -22,6 +23,8 @@ import {
 } from "../constants/status";
 
 import { formatSaleCode } from "../utils/formatSaleCode";
+
+import { GENDER_LABELS } from "@/features/products/constants/gender";
 
 import type { Sale } from "../types/sale.types";
 
@@ -61,6 +64,8 @@ export function ShippingDialog({
 
   const isCancelled =
     sale.status === "CANCELLED";
+
+  const item = sale.items[0];
 
   return (
     <Dialog
@@ -120,6 +125,40 @@ export function ShippingDialog({
               </p>
             </div>
           </div>
+
+          {item && (
+            <div className="flex gap-3 rounded-lg bg-zinc-50 p-4">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white">
+                <Package className="h-4 w-4 text-zinc-600" />
+              </div>
+
+              <div className="min-w-0 flex-1">
+                <p className="text-xs text-zinc-500">
+                  Modelo
+                </p>
+
+                <p className="mt-1 truncate text-sm font-medium text-zinc-900">
+                  {item.productName}
+                </p>
+
+                <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                  <span className="rounded-full bg-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-700">
+                    {
+                      GENDER_LABELS[
+                        item.gender
+                      ]
+                    }
+                  </span>
+
+                  {item.color && (
+                    <span className="rounded-full bg-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-700">
+                      Color: {item.color}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="flex items-center justify-between gap-3 rounded-lg bg-zinc-50 p-4">
             <div className="flex gap-3">

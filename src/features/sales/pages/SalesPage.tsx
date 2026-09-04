@@ -163,6 +163,9 @@ export function SalesPage() {
         paymentMethod:
           data.paymentMethod,
 
+        color: data.color,
+        size: data.size,
+
         shipping: {
           recipientName:
             data.recipientName,

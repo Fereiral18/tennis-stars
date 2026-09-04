@@ -49,6 +49,16 @@ export const saleSchema = z.object({
     },
   ),
 
+  color: z
+    .string()
+    .trim()
+    .optional(),
+
+  size: z
+    .string()
+    .trim()
+    .optional(),
+
   recipientName: z
     .string()
     .trim()

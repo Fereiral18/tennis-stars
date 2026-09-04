@@ -16,6 +16,8 @@ import {
   type SaleFormInput,
 } from "../schemas/sale.schema";
 
+import { GENDER_LABELS } from "@/features/products/constants/gender";
+
 import type { Product } from "@/features/products/types/product.types";
 
 interface SaleFormProps {
@@ -54,6 +56,8 @@ export function SaleForm({
       productId: "",
       quantity: 1,
       paymentMethod: "CASH",
+      color: "",
+      size: "",
       recipientName: "",
       address: "",
       city: "",
@@ -76,6 +80,16 @@ export function SaleForm({
         product.id ===
         selectedProductId,
     );
+
+  const colorOptions =
+    selectedProduct?.options.filter(
+      (option) => option.name === "Color",
+    ) ?? [];
+
+  const sizeOptions =
+    selectedProduct?.options.filter(
+      (option) => option.name === "Talla",
+    ) ?? [];
 
   const total =
     selectedProduct &&
@@ -277,6 +291,16 @@ export function SaleForm({
               </p>
             </div>
 
+            <div className="flex items-center gap-2">
+              <span className="rounded-full bg-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-700">
+                {
+                  GENDER_LABELS[
+                    selectedProduct.gender
+                  ]
+                }
+              </span>
+            </div>
+
             <div className="text-right">
               <p className="text-xs text-zinc-500">
                 Total
@@ -290,6 +314,80 @@ export function SaleForm({
             </div>
           </div>
         )}
+
+        {selectedProduct &&
+          (colorOptions.length > 0 ||
+            sizeOptions.length > 0) && (
+            <div className="grid gap-4 sm:grid-cols-2">
+              {colorOptions.length > 0 && (
+                <div className="space-y-2">
+                  <label
+                    htmlFor="color"
+                    className="text-sm font-medium text-zinc-900"
+                  >
+                    Color
+                  </label>
+
+                  <select
+                    id="color"
+                    {...register(
+                      "color",
+                    )}
+                    className="h-10 w-full rounded-md border border-zinc-200 bg-white px-3 text-sm outline-none focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+                  >
+                    <option value="">
+                      Seleccioná un color
+                    </option>
+
+                    {colorOptions.map(
+                      (option) => (
+                        <option
+                          key={option.value}
+                          value={option.value}
+                        >
+                          {option.value}
+                        </option>
+                      ),
+                    )}
+                  </select>
+                </div>
+              )}
+
+              {sizeOptions.length > 0 && (
+                <div className="space-y-2">
+                  <label
+                    htmlFor="size"
+                    className="text-sm font-medium text-zinc-900"
+                  >
+                    Talla
+                  </label>
+
+                  <select
+                    id="size"
+                    {...register(
+                      "size",
+                    )}
+                    className="h-10 w-full rounded-md border border-zinc-200 bg-white px-3 text-sm outline-none focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+                  >
+                    <option value="">
+                      Seleccioná una talla
+                    </option>
+
+                    {sizeOptions.map(
+                      (option) => (
+                        <option
+                          key={option.value}
+                          value={option.value}
+                        >
+                          {option.value}
+                        </option>
+                      ),
+                    )}
+                  </select>
+                </div>
+              )}
+            </div>
+          )}
       </section>
 
       {/* Pago */}
