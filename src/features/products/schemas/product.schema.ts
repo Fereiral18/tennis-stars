@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+export const productOptionSchema = z.object({
+  name: z.enum(["Color", "Talla"]),
+
+  value: z
+    .string()
+    .trim()
+    .min(1, "Ingresá un valor"),
+});
+
 export const productSchema = z.object({
   name: z
     .string()
@@ -42,12 +51,35 @@ export const productSchema = z.object({
       "Ingresá una URL de imagen válida",
     ),
 
+  brand: z
+    .string()
+    .trim()
+    .min(
+      2,
+      "La marca debe tener al menos 2 caracteres",
+    )
+    .max(
+      50,
+      "La marca no puede superar los 50 caracteres",
+    ),
+
+  gender: z.enum(
+    ["MALE", "FEMALE", "UNISEX", "KIDS"],
+    {
+      error: "Seleccioná un género",
+    },
+  ),
+
   categoryId: z
     .string()
     .min(
       1,
       "Seleccioná una categoría",
     ),
+
+  options: z
+    .array(productOptionSchema)
+    .default([]),
 });
 
 export type ProductFormData =

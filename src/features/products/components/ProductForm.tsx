@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2 } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { Loader2, X } from "lucide-react";
+import { useState } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
 
 import {
   productSchema,
@@ -9,7 +10,7 @@ import {
 } from "../schemas/product.schema";
 
 
-import type { Product } from "../types/product.types";
+import type { Product, ProductOptionName } from "../types/product.types";
 import type { Category } from "@/features/categories/types/category.schema";
 
 interface ProductFormProps {
@@ -21,6 +22,24 @@ interface ProductFormProps {
   ) => Promise<void>;
   onCancel: () => void;
 }
+
+const GENDER_LABELS: Record<
+  "MALE" | "FEMALE" | "UNISEX" | "KIDS",
+  string
+> = {
+  MALE: "Hombre",
+  FEMALE: "Mujer",
+  UNISEX: "Unisex",
+  KIDS: "Niños",
+};
+
+const OPTION_PLACEHOLDERS: Record<
+  ProductOptionName,
+  string
+> = {
+  Color: "Ej. Rojo",
+  Talla: "Ej. 42",
+};
 
 export function ProductForm({
   product,
@@ -34,6 +53,7 @@ export function ProductForm({
     handleSubmit,
     formState: { errors },
     watch,
+    control,
   } = useForm<
     ProductFormInput,
     unknown,
@@ -47,12 +67,49 @@ export function ProductForm({
         product?.description ?? "",
       price: product?.price ?? undefined,
       imageUrl: product?.imageUrl ?? "",
+      brand: product?.brand ?? "",
+      gender: product?.gender ?? "UNISEX",
       categoryId:
         product?.categoryId ?? "",
+      options:
+        product?.options?.map(
+          (option) => ({
+            name: option.name,
+            value: option.value,
+          }),
+        ) ?? [],
     },
   });
 
+  const { fields, append, remove } =
+    useFieldArray({
+      control,
+      name: "options",
+    });
+
+  const [
+    optionToAdd,
+    setOptionToAdd,
+  ] = useState<"" | ProductOptionName>(
+    "",
+  );
+
   const imageUrl = watch("imageUrl");
+
+  function handleAddOption(
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ): void {
+    const value = event.target
+      .value as
+      | ""
+      | ProductOptionName;
+
+    if (value) {
+      append({ name: value, value: "" });
+    }
+
+    setOptionToAdd("");
+  }
 
   return (
     <form
@@ -80,6 +137,63 @@ export function ProductForm({
             {errors.name.message}
           </p>
         )}
+      </div>
+
+      {/* Marca y Género */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="space-y-2">
+          <label
+            htmlFor="product-brand"
+            className="text-sm font-medium text-zinc-900"
+          >
+            Marca
+          </label>
+
+          <input
+            id="product-brand"
+            {...register("brand")}
+            placeholder="Ej. Nike"
+            className="flex h-10 w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm outline-none transition placeholder:text-zinc-400 focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+          />
+
+          {errors.brand && (
+            <p className="text-xs text-red-500">
+              {errors.brand.message}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="product-gender"
+            className="text-sm font-medium text-zinc-900"
+          >
+            Género
+          </label>
+
+          <select
+            id="product-gender"
+            {...register("gender")}
+            className="flex h-10 w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+          >
+            {Object.entries(
+              GENDER_LABELS,
+            ).map(([value, label]) => (
+              <option
+                key={value}
+                value={value}
+              >
+                {label}
+              </option>
+            ))}
+          </select>
+
+          {errors.gender && (
+            <p className="text-xs text-red-500">
+              {errors.gender.message}
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Categoría */}
@@ -208,6 +322,79 @@ export function ProductForm({
               }}
             />
           </div>
+        )}
+      </div>
+
+      {/* Opciones de producto */}
+      <div className="space-y-2">
+        <label
+          htmlFor="product-option-add"
+          className="text-sm font-medium text-zinc-900"
+        >
+          Opciones de producto
+        </label>
+
+        <select
+          id="product-option-add"
+          value={optionToAdd}
+          onChange={handleAddOption}
+          className="flex h-10 w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+        >
+          <option value="">
+            Agregar opción...
+          </option>
+
+          <option value="Color">
+            Color
+          </option>
+
+          <option value="Talla">
+            Talla
+          </option>
+        </select>
+
+        {fields.length > 0 && (
+          <div className="space-y-2 pt-1">
+            {fields.map((field, index) => (
+              <div
+                key={field.id}
+                className="flex items-center gap-2"
+              >
+                <span className="w-14 shrink-0 text-xs font-medium text-zinc-500">
+                  {field.name}
+                </span>
+
+                <input
+                  {...register(
+                    `options.${index}.value`,
+                  )}
+                  placeholder={
+                    OPTION_PLACEHOLDERS[
+                      field.name
+                    ]
+                  }
+                  className="flex h-9 w-full rounded-md border border-zinc-200 bg-white px-3 text-sm outline-none transition placeholder:text-zinc-400 focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+                />
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    remove(index)
+                  }
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-zinc-200 text-zinc-500 transition hover:border-red-200 hover:bg-red-50 hover:text-red-600"
+                  aria-label="Eliminar opción"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {errors.options && (
+          <p className="text-xs text-red-500">
+            Revisá los valores de las opciones
+          </p>
         )}
       </div>
 
