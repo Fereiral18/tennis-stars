@@ -1,6 +1,12 @@
-
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Check,
+  LockKeyhole,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 
 import { LoginForm } from "../components/LoginForm";
 import { useAuth } from "../hooks/useAuth";
@@ -22,706 +28,356 @@ export function LoginPage() {
   }
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#171513] px-4 py-6 sm:px-6">
-
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-
-        {/* Warm glow */}
-        <div className="absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-orange-500/10 blur-[120px]" />
-
-        <div className="absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-amber-500/10 blur-[120px]" />
-
-        {/* Subtle grid */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-            backgroundSize: "70px 70px",
+    <main className="min-h-screen bg-[#F5F1EB] px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto flex min-h-[calc(100vh-3rem)] w-full max-w-7xl items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.65,
+            ease: [0.22, 1, 0.36, 1],
           }}
-        />
-
-      </div>
-
-      {/* =====================================================
-          MAIN CARD
-      ====================================================== */}
-
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 24,
-          scale: 0.98,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-          scale: 1,
-        }}
-        transition={{
-          duration: 0.65,
-          ease: "easeOut",
-        }}
-        className="
-          relative
-          z-10
-          grid
-          w-full
-          max-w-6xl
-          overflow-hidden
-          rounded-[2rem]
-          border
-          border-white/10
-          bg-[#f7f4ef]
-          shadow-[0_30px_100px_rgba(0,0,0,0.45)]
-          lg:grid-cols-[1.05fr_0.95fr]
-        "
-      >
-
-        {/* =====================================================
-            BRAND PANEL
-        ====================================================== */}
-
-        <section className="
-          relative
-          hidden
-          min-h-[700px]
-          overflow-hidden
-          bg-[#201d1a]
-          p-10
-          text-white
-          lg:flex
-          lg:flex-col
-          lg:justify-between
-          xl:p-14
-        ">
-
-          {/* Warm gradient */}
-          <div className="
-            absolute
-            inset-0
-            bg-gradient-to-br
-            from-orange-500/[0.13]
-            via-transparent
-            to-amber-500/[0.06]
-          " />
-
-          {/* Decorative circles */}
-          <div className="
-            absolute
-            -right-32
-            top-20
-            h-80
-            w-80
-            rounded-full
+          className="
+            grid
+            w-full
+            overflow-hidden
+            rounded-[2rem]
             border
-            border-orange-400/10
-          " />
-
-          <div className="
-            absolute
-            -right-20
-            top-32
-            h-56
-            w-56
-            rounded-full
-            border
-            border-orange-400/10
-          " />
-
-          {/* Decorative shoe-like shape */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 80,
-              rotate: 8,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              rotate: 0,
-            }}
-            transition={{
-              duration: 0.9,
-              delay: 0.2,
-              ease: "easeOut",
-            }}
-            className="
-              absolute
-              -right-8
-              top-24
-              h-52
-              w-80
-              rotate-[-12deg]
-              rounded-[45%_20%_25%_15%]
-              bg-gradient-to-br
-              from-[#e87932]
-              via-[#c95f25]
-              to-[#7c351c]
-              opacity-90
-              shadow-[0_25px_60px_rgba(232,121,50,0.2)]
-            "
-          >
-            {/* Shoe details */}
-            <div className="
-              absolute
-              left-12
-              top-12
-              h-1
-              w-40
-              rotate-[-10deg]
-              bg-white/20"
-            />
-
-            <div className="
-              absolute
-              left-16
-              top-20
-              h-1
-              w-32
-              rotate-[-10deg]
-              bg-white/10"
-              
-            />
-
-            <div className="
-              absolute
-              bottom-4
-              left-10
-              right-8
-              h-5
-              rounded-full
-              bg-[#f4eee5]
-              opacity-90"
-            />
-          </motion.div>
-
+            border-[#DED7CE]
+            bg-[#FCFAF7]
+            shadow-[0_25px_80px_rgba(58,48,38,0.12)]
+            lg:min-h-[720px]
+            lg:grid-cols-[1.05fr_0.95fr]
+          "
+        >
           {/* =====================================================
-              BRAND
+              BRAND / VISUAL PANEL
           ====================================================== */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -20,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            className="relative z-10"
-          >
-
-            <div className="flex items-center gap-3">
-
-              <div className="
-                flex
-                h-11
-                w-11
-                items-center
-                justify-center
-                rounded-2xl
-                bg-[#f0a35b]
-                text-lg
-                font-bold
-                text-[#201d1a]
-                shadow-lg
-                shadow-orange-500/20
-              ">
-                C
-              </div>
-
-              <div>
-                <span className="
-                  block
-                  text-lg
-                  font-bold
-                  tracking-tight
-                ">
-                  Court Store
-                </span>
-
-                <span className="
-                  text-[9px]
-                  font-medium
-                  uppercase
-                  tracking-[0.3em]
-                  text-stone-500
-                ">
-                  Footwear & Style
-                </span>
-              </div>
-
-            </div>
-
-          </motion.div>
-
-          {/* =====================================================
-              HERO MESSAGE
-          ====================================================== */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 0.15,
-            }}
-            className="relative z-10 max-w-lg"
-          >
-
-            <div className="
-              mb-6
-              flex
-              items-center
-              gap-2
-              text-xs
-              font-semibold
-              uppercase
-              tracking-[0.25em]
-              text-orange-400
-            ">
-              <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
-
-              Premium Footwear
-            </div>
-
-            <h1 className="
-              text-5xl
-              font-semibold
-              leading-[1.02]
-              tracking-[-0.03em]
-              xl:text-6xl
-            ">
-              El estilo
-              <span className="block text-[#e99a57]">
-                empieza por tus pies.
-              </span>
-            </h1>
-
-            <p className="
-              mt-7
-              max-w-md
-              text-base
-              leading-7
-              text-stone-400
-            ">
-              Gestioná tu catálogo, productos, categorías y
-              ventas desde un espacio creado para llevar
-              Court Store al siguiente nivel.
-            </p>
-
-          </motion.div>
-
-          {/* =====================================================
-              FEATURES
-          ====================================================== */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.5,
-              delay: 0.35,
-            }}
-            className="
-              relative
-              z-10
-              grid
-              grid-cols-3
-              gap-3
-            "
-          >
-
-            <div className="
-              rounded-2xl
-              border
-              border-white/[0.06]
-              bg-white/[0.035]
-              p-4
-              backdrop-blur-sm
-            ">
-              <p className="text-lg font-semibold">
-                01
-              </p>
-
-              <p className="mt-1 text-xs text-stone-500">
-                Catálogo
-              </p>
-            </div>
-
-            <div className="
-              rounded-2xl
-              border
-              border-white/[0.06]
-              bg-white/[0.035]
-              p-4
-              backdrop-blur-sm
-            ">
-              <p className="text-lg font-semibold">
-                02
-              </p>
-
-              <p className="mt-1 text-xs text-stone-500">
-                Ventas
-              </p>
-            </div>
-
-            <div className="
-              rounded-2xl
-              border
-              border-white/[0.06]
-              bg-white/[0.035]
-              p-4
-              backdrop-blur-sm
-            ">
-              <p className="text-lg font-semibold">
-                03
-              </p>
-
-              <p className="mt-1 text-xs text-stone-500">
-                Analytics
-              </p>
-            </div>
-
-          </motion.div>
-
-          {/* Footer */}
-
-          <p className="
-            relative
-            z-10
-            text-xs
-            text-stone-600
-          ">
-            © {new Date().getFullYear()} Court Store
-          </p>
-
-        </section>
-
-        {/* =====================================================
-            LOGIN PANEL
-        ====================================================== */}
-
-        <section className="
-          flex
-          min-h-[700px]
-          items-center
-          bg-[#f7f4ef]
-          px-6
-          py-10
-          sm:px-10
-          lg:px-14
-        ">
-
-          <div className="mx-auto w-full max-w-md">
-
-            {/* Mobile branding */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: -10,
+          <section className="relative hidden overflow-hidden bg-[#403B35] lg:flex">
+            {/* Background image */}
+            <div
+              className="
+                absolute
+                inset-0
+                bg-cover
+                bg-center
+              "
+              style={{
+                backgroundImage:
+                  "url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=85')",
               }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.4,
-              }}
-              className="mb-12 lg:hidden"
-            >
+            />
 
-              <div className="flex items-center gap-3">
+            {/* Warm overlay */}
+            <div className="absolute inset-0 bg-[#2F2A25]/65" />
 
-                <div className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-2xl
-                  bg-[#e9a05c]
-                  font-bold
-                  text-[#201d1a]
-                ">
-                  C
-                </div>
+            {/* Soft light */}
+            <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[#D9B99B]/20 blur-[100px]" />
 
-                <div>
+            <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-[#9BA58A]/20 blur-[100px]" />
 
-                  <p className="
-                    font-bold
-                    text-[#201d1a]
-                  ">
-                    Court Store
-                  </p>
-
-                  <p className="
-                    text-[9px]
-                    uppercase
-                    tracking-[0.25em]
-                    text-stone-400
-                  ">
-                    Footwear & Style
-                  </p>
-
-                </div>
-
-              </div>
-
-            </motion.div>
-
-            {/* Header */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 15,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.5,
-                delay: 0.1,
-              }}
-              className="mb-9"
-            >
-
-              <div className="
-                mb-5
-                inline-flex
-                items-center
-                rounded-full
-                border
-                border-orange-200
-                bg-orange-50
-                px-3
-                py-1.5
-                text-[11px]
-                font-semibold
-                uppercase
-                tracking-wider
-                text-orange-700
-              ">
-                Admin Dashboard
-              </div>
-
-              <h2 className="
-                text-3xl
-                font-semibold
-                tracking-tight
-                text-[#201d1a]
-              ">
-                Bienvenido de nuevo
-              </h2>
-
-              <p className="
-                mt-2
-                text-sm
-                leading-6
-                text-stone-500
-              ">
-                Ingresá para administrar tu tienda.
-              </p>
-
-            </motion.div>
-
-            {/* Login */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 15,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.5,
-                delay: 0.2,
-              }}
-            >
-              <LoginForm
-                onSubmit={handleLogin}
-                isLoading={isLoading}
-                error={error}
-              />
-            </motion.div>
-
-            {/* Forgot password */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              transition={{
-                duration: 0.5,
-                delay: 0.3,
-              }}
-              className="mt-5 text-center"
-            >
-
-              <Link
-                to="/reset-password"
-                className="
-                  text-sm
-                  font-medium
-                  text-stone-500
-                  transition-colors
-                  hover:text-orange-700
-                  hover:underline
-                  hover:underline-offset-4
-                "
-              >
-                ¿Olvidaste tu contraseña?
-              </Link>
-
-            </motion.div>
-
-            {/* Development access */}
-
-            {import.meta.env.DEV && (
+            {/* Content */}
+            <div className="relative z-10 flex w-full flex-col justify-between p-10 xl:p-14">
+              {/* Brand */}
               <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 10,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.4,
-                }}
-                className="
-                  mt-8
-                  overflow-hidden
-                  rounded-2xl
-                  border
-                  border-stone-200
-                  bg-white/60
-                "
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
               >
-
-                <div className="
-                  flex
-                  items-center
-                  gap-3
-                  border-b
-                  border-stone-200
-                  px-4
-                  py-3
-                ">
-
-                  <div className="
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-lg
-                    bg-orange-100
-                    text-sm
-                  ">
-                    🔐
+                <Link to="/" className="group inline-flex items-center gap-3">
+                  <div
+                    className="
+                      flex
+                      h-12
+                      w-12
+                      items-center
+                      justify-center
+                      rounded-2xl
+                      bg-[#F5EBDD]
+                      text-lg
+                      font-black
+                      tracking-tight
+                      text-[#403B35]
+                      shadow-lg
+                      transition-transform
+                      duration-300
+                      group-hover:scale-105
+                    "
+                  >
+                    C
                   </div>
 
                   <div>
+                    <span className="block text-lg font-bold tracking-tight text-white">
+                      Court Store
+                    </span>
 
-                    <p className="
-                      text-xs
-                      font-semibold
-                      text-stone-800
-                    ">
-                      Acceso de desarrollo
+                    <span className="block text-[9px] font-medium uppercase tracking-[0.28em] text-white/55">
+                      Footwear & Style
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+
+              {/* Hero */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="max-w-lg"
+              >
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-md">
+                  <Sparkles className="h-3.5 w-3.5 text-[#D9B99B]" />
+
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/75">
+                    Estilo que te representa
+                  </span>
+                </div>
+
+                <h1 className="text-5xl font-semibold leading-[1.03] tracking-[-0.045em] text-white xl:text-6xl">
+                  Caminá con
+                  <span className="block text-[#E1C5AA]">
+                    tu propio estilo.
+                  </span>
+                </h1>
+
+                <p className="mt-6 max-w-md text-sm leading-7 text-white/65 xl:text-base">
+                  Descubrí una selección de calzado pensada para quienes buscan
+                  comodidad, personalidad y estilo en cada paso.
+                </p>
+
+                {/* Features */}
+                <div className="mt-9 grid grid-cols-2 gap-3">
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-4 backdrop-blur-md">
+                    <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-xl bg-white/10">
+                      <Check className="h-4 w-4 text-[#D9B99B]" />
+                    </div>
+
+                    <p className="text-sm font-medium text-white">
+                      Selección cuidada
                     </p>
 
-                    <p className="
-                      text-[11px]
-                      text-stone-500
-                    ">
-                      Solo visible en entorno local
+                    <p className="mt-1 text-xs leading-5 text-white/45">
+                      Modelos elegidos para vos.
                     </p>
-
                   </div>
 
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-4 backdrop-blur-md">
+                    <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-xl bg-white/10">
+                      <Sparkles className="h-4 w-4 text-[#D9B99B]" />
+                    </div>
+
+                    <p className="text-sm font-medium text-white">
+                      Estilo auténtico
+                    </p>
+
+                    <p className="mt-1 text-xs leading-5 text-white/45">
+                      Encontrá tu próximo favorito.
+                    </p>
+                  </div>
                 </div>
-
-                <div className="
-                  px-4
-                  py-3
-                  font-mono
-                  text-xs
-                ">
-
-                  <p className="text-stone-600">
-                    admin@courtstore.com
-                  </p>
-
-                  <p className="mt-1 text-stone-400">
-                    solicitar contraseña
-                  </p>
-
-                </div>
-
               </motion.div>
-            )}
 
-            {/* Footer */}
+              {/* Bottom */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="flex items-center justify-between"
+              >
+                <p className="text-xs text-white/35">
+                  © {new Date().getFullYear()} Court Store
+                </p>
 
-            <div className="
-              mt-10
-              flex
-              items-center
-              justify-center
-              gap-2
-              text-xs
-              text-stone-400
-            ">
-              <span className="
-                h-1.5
-                w-1.5
-                rounded-full
-                bg-orange-400"
-              />
-
-              Acceso seguro · Court Store
-
+                <div className="flex items-center gap-2 text-xs text-white/40">
+                  <ShieldCheck className="h-3.5 w-3.5" />
+                  Compra segura
+                </div>
+              </motion.div>
             </div>
+          </section>
 
-          </div>
+          {/* =====================================================
+              LOGIN PANEL
+          ====================================================== */}
 
-        </section>
+          <section className="relative flex items-center bg-[#FCFAF7] px-6 py-10 sm:px-10 lg:px-14 xl:px-20">
+            {/* Decorative background */}
+            <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#E6D7C8]/50 blur-[90px]" />
 
-      </motion.div>
+            <div className="pointer-events-none absolute -bottom-32 -left-24 h-72 w-72 rounded-full bg-[#DCE1D5]/60 blur-[90px]" />
 
+            <div className="relative z-10 mx-auto w-full max-w-md">
+              {/* =================================================
+                  MOBILE BRAND
+              ================================================== */}
+
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45 }}
+                className="mb-12 lg:hidden"
+              >
+                <Link to="/" className="inline-flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#403B35] text-base font-black text-[#F5EBDD] shadow-md">
+                    C
+                  </div>
+
+                  <div>
+                    <p className="font-bold tracking-tight text-[#403B35]">
+                      Court Store
+                    </p>
+
+                    <p className="text-[9px] uppercase tracking-[0.25em] text-[#403B35]/45">
+                      Footwear & Style
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
+
+              {/* =================================================
+                  HEADER
+              ================================================== */}
+
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.1,
+                }}
+              >
+                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#E4DDD4] bg-[#F4EFE9] px-3 py-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#87947B]" />
+
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6E665E]">
+                    Acceso privado
+                  </span>
+                </div>
+
+                <h2 className="text-3xl font-semibold tracking-[-0.035em] text-[#403B35] sm:text-4xl">
+                  Bienvenido de nuevo.
+                </h2>
+
+                <p className="mt-3 max-w-sm text-sm leading-6 text-[#403B35]/55">
+                  Ingresá a tu cuenta para continuar gestionando Court Store.
+                </p>
+              </motion.div>
+
+              {/* =================================================
+                  FORM
+              ================================================== */}
+
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.2,
+                }}
+                className="mt-9"
+              >
+                <LoginForm
+                  onSubmit={handleLogin}
+                  isLoading={isLoading}
+                  error={error}
+                />
+              </motion.div>
+
+              {/* =================================================
+                  FORGOT PASSWORD
+              ================================================== */}
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.3,
+                }}
+                className="mt-5 text-center"
+              >
+                <Link
+                  to="/reset-password"
+                  className="
+                    inline-flex
+                    items-center
+                    gap-1.5
+                    text-sm
+                    font-medium
+                    text-[#6E665E]
+                    transition-colors
+                    duration-200
+                    hover:text-[#403B35]
+                  "
+                >
+                  ¿Olvidaste tu contraseña?
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </Link>
+              </motion.div>
+
+              {/* =================================================
+                  DEVELOPMENT ACCESS
+              ================================================== */}
+
+              {import.meta.env.DEV && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.4,
+                  }}
+                  className="mt-8 overflow-hidden rounded-2xl border border-[#E4DDD4] bg-[#F5F1EB]/70"
+                >
+                  <div className="flex items-center gap-3 border-b border-[#E4DDD4] px-4 py-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#E9E2D9]">
+                      <LockKeyhole className="h-4 w-4 text-[#6E665E]" />
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold text-[#403B35]">
+                        Acceso de desarrollo
+                      </p>
+
+                      <p className="text-[11px] text-[#403B35]/40">
+                        Solo visible en entorno local
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="px-4 py-3 font-mono text-xs">
+                    <p className="text-[#403B35]/70">admin@courtstore.com</p>
+
+                    <p className="mt-1 text-[#403B35]/35">
+                      solicitar contraseña
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* =================================================
+                  SECURITY FOOTER
+              ================================================== */}
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.45,
+                }}
+                className="mt-10 flex items-center justify-center gap-2 text-xs text-[#403B35]/35"
+              >
+                <ShieldCheck className="h-3.5 w-3.5" />
+
+                <span>Tus datos están protegidos</span>
+              </motion.div>
+            </div>
+          </section>
+        </motion.div>
+      </div>
     </main>
-    )}
+  );
+}
