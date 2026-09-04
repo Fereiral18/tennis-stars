@@ -11,6 +11,7 @@ import {
 
 
 import { GENDER_LABELS } from "../constants/gender";
+import { productService } from "../services/product.service";
 
 import type { Product, ProductOptionName } from "../types/product.types";
 import type { Category } from "@/features/categories/types/category.schema";
@@ -45,6 +46,7 @@ export function ProductForm({
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
     control,
   } = useForm<
     ProductFormInput,
@@ -86,7 +88,44 @@ export function ProductForm({
     "",
   );
 
+  const [isUploadingImage, setIsUploadingImage] =
+    useState(false);
+
+  const [uploadError, setUploadError] =
+    useState<string | null>(null);
+
   const imageUrl = watch("imageUrl");
+
+  async function handleImageChange(
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): Promise<void> {
+    const file = event.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    setUploadError(null);
+    setValue("imageUrl", URL.createObjectURL(file));
+    setIsUploadingImage(true);
+
+    try {
+      const uploadedUrl =
+        await productService.uploadImage(file);
+
+      setValue("imageUrl", uploadedUrl, {
+        shouldValidate: true,
+      });
+    } catch (error) {
+      setUploadError(
+        error instanceof Error
+          ? error.message
+          : "No fue posible subir la imagen",
+      );
+    } finally {
+      setIsUploadingImage(false);
+    }
+  }
 
   function handleAddOption(
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -285,25 +324,31 @@ export function ProductForm({
           htmlFor="product-image"
           className="text-sm font-medium text-zinc-900"
         >
-          URL de imagen
+          Imagen del producto
         </label>
 
         <input
           id="product-image"
-          type="url"
-          {...register("imageUrl")}
-          placeholder="https://..."
-          className="flex h-10 w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm outline-none transition placeholder:text-zinc-400 focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="block w-full text-sm text-zinc-600 file:mr-3 file:rounded-md file:border-0 file:bg-zinc-950 file:px-3 file:py-2 file:text-sm file:font-medium file:text-white file:transition hover:file:bg-zinc-800"
         />
 
-        {errors.imageUrl && (
+        {uploadError && (
+          <p className="text-xs text-red-500">
+            {uploadError}
+          </p>
+        )}
+
+        {!uploadError && errors.imageUrl && (
           <p className="text-xs text-red-500">
             {errors.imageUrl.message}
           </p>
         )}
 
-        {imageUrl && !errors.imageUrl && (
-          <div className="mt-3 overflow-hidden rounded-lg border border-zinc-200 bg-zinc-50">
+        {imageUrl && (
+          <div className="relative mt-3 overflow-hidden rounded-lg border border-zinc-200 bg-zinc-50">
             <img
               src={imageUrl}
               alt="Vista previa"
@@ -313,6 +358,12 @@ export function ProductForm({
                   "none";
               }}
             />
+
+            {isUploadingImage && (
+              <div className="absolute inset-0 flex items-center justify-center bg-white/70">
+                <Loader2 className="h-5 w-5 animate-spin text-zinc-500" />
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -403,7 +454,9 @@ export function ProductForm({
 
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={
+            isSubmitting || isUploadingImage
+          }
           className="inline-flex items-center rounded-md bg-zinc-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting && (

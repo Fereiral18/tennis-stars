@@ -6,6 +6,19 @@ import type {
 } from "../types/product.types";
 
 export const productService = {
+  async uploadImage(file: File): Promise<string> {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const { data } = await api.post<{ url: string }>(
+      "/uploads/image",
+      formData,
+      { headers: { "Content-Type": "multipart/form-data" } },
+    );
+
+    return data.url;
+  },
+
   async getAll(): Promise<Product[]> {
     const { data } = await api.get<Product[]>("/products");
 
