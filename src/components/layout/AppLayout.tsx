@@ -40,7 +40,7 @@ export function AppLayout() {
           }
         />
 
-        <main className="flex-1">
+        <main className="flex-1 bg-[#181B1F]">
           <div className="mx-auto max-w-[1600px]">
             <Outlet />
           </div>
