@@ -10,6 +10,8 @@ import {
 } from "../schemas/product.schema";
 
 
+import { GENDER_LABELS } from "../constants/gender";
+
 import type { Product, ProductOptionName } from "../types/product.types";
 import type { Category } from "@/features/categories/types/category.schema";
 
@@ -22,16 +24,6 @@ interface ProductFormProps {
   ) => Promise<void>;
   onCancel: () => void;
 }
-
-const GENDER_LABELS: Record<
-  "MALE" | "FEMALE" | "UNISEX" | "KIDS",
-  string
-> = {
-  MALE: "Hombre",
-  FEMALE: "Mujer",
-  UNISEX: "Unisex",
-  KIDS: "Niños",
-};
 
 const OPTION_PLACEHOLDERS: Record<
   ProductOptionName,

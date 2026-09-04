@@ -16,8 +16,20 @@ import {
   type DataTableColumn,
 } from "@/components/shared/DataTable";
 
+import { GENDER_LABELS } from "../constants/gender";
+
 import type { Product } from "../types/product.types";
 import type { Category } from "@/features/categories/types/category.schema";
+
+function getColorValues(product: Product): string {
+  const colors = product.options
+    .filter((option) => option.name === "Color")
+    .map((option) => option.value);
+
+  return colors.length > 0
+    ? colors.join(", ")
+    : "—";
+}
 
 interface ProductTableProps {
   products: Product[];
@@ -170,6 +182,53 @@ export function ProductTable({
           </span>
         );
       },
+    },
+
+    {
+      key: "brand",
+      header: "Marca",
+      className: "bg-[#101214]",
+      render: (product) => (
+        <span className="text-sm font-medium text-[#C1C5C9]">
+          {product.brand}
+        </span>
+      ),
+    },
+
+    {
+      key: "gender",
+      header: "Género",
+      className: "bg-[#101214]",
+      render: (product) => (
+        <span
+          className="
+            inline-flex
+            items-center
+            rounded-lg
+            border
+            border-[#343A40]
+            bg-[#20242A]
+            px-2.5
+            py-1.5
+            text-[11px]
+            font-semibold
+            text-[#AEB4B9]
+          "
+        >
+          {GENDER_LABELS[product.gender]}
+        </span>
+      ),
+    },
+
+    {
+      key: "color",
+      header: "Color",
+      className: "bg-[#101214]",
+      render: (product) => (
+        <span className="text-sm text-[#AEB4B9]">
+          {getColorValues(product)}
+        </span>
+      ),
     },
 
     {
