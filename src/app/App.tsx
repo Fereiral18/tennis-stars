@@ -3,15 +3,16 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { router } from "./router";
+import { ThemeProvider } from "./providers/ThemeProvider";
 
 export function App() {
   return (
-    <>
+    <ThemeProvider>
       <RouterProvider router={router} />
       <ToastContainer
         position="top-right"
         autoClose={3000}
       />
-    </>
+    </ThemeProvider>
   );
 }

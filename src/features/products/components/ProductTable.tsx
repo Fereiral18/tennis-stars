@@ -56,7 +56,7 @@ export function ProductTable({
     {
       key: "product",
       header: "Producto",
-      className: "min-w-[320px] bg-[#101214]",
+      className: "min-w-[320px] bg-[var(--tt-bg-page)]",
       render: (product) => (
         <div className="group flex min-w-[280px] items-center gap-3.5  ">
           {/* Imagen */}
@@ -69,12 +69,12 @@ export function ProductTable({
               overflow-hidden
               rounded-xl
               border
-              border-[#343A40]
-              bg-[#20242A]
+              border-[var(--tt-border-strong)]
+              bg-[var(--tt-bg-hover)]
               shadow-[0_6px_16px_rgba(0,0,0,0.14)]
               transition-all
               duration-300
-              group-hover:border-[#40382F]
+              group-hover:border-[var(--tt-avatar-border)]
               group-hover:shadow-[0_8px_20px_rgba(0,0,0,0.22)]
             "
           >
@@ -116,10 +116,10 @@ export function ProductTable({
                 text-sm
                 font-semibold
                 tracking-tight
-                text-[#EDEEEB]
+                text-[var(--tt-text-primary-alt)]
                 transition-colors
                 duration-200
-                group-hover:text-[#F5F5F2]
+                group-hover:text-[var(--tt-text-primary)]
               "
             >
               {product.name}
@@ -132,7 +132,7 @@ export function ProductTable({
                 truncate
                 text-[11px]
                 leading-5
-                text-[#656D75]
+                text-[var(--tt-text-icon-secondary)]
               "
             >
               {product.description || "Sin descripción"}
@@ -145,7 +145,7 @@ export function ProductTable({
     {
       key: "category",
       header: "Categoría",
-       className: "bg-[#101214]",
+       className: "bg-[var(--tt-bg-page)]",
       render: (product) => {
         const categoryName = getCategoryName(product.categoryId);
         const hasCategory = categoryName !== "Sin categoría";
@@ -166,14 +166,14 @@ export function ProductTable({
               ${
                 hasCategory
                   ? `
-                    border-[#40382F]
-                    bg-[#29231D]
+                    border-[var(--tt-avatar-border)]
+                    bg-[var(--tt-avatar-bg)]
                     text-[#D0AE82]
                   `
                   : `
-                    border-[#343A40]
-                    bg-[#20242A]
-                    text-[#737B83]
+                    border-[var(--tt-border-strong)]
+                    bg-[var(--tt-bg-hover)]
+                    text-[var(--tt-text-muted)]
                   `
               }
             `}
@@ -187,7 +187,7 @@ export function ProductTable({
     {
       key: "brand",
       header: "Marca",
-      className: "bg-[#101214]",
+      className: "bg-[var(--tt-bg-page)]",
       render: (product) => (
         <span className="text-sm font-medium text-[#C1C5C9]">
           {product.brand}
@@ -198,7 +198,7 @@ export function ProductTable({
     {
       key: "gender",
       header: "Género",
-      className: "bg-[#101214]",
+      className: "bg-[var(--tt-bg-page)]",
       render: (product) => (
         <span
           className="
@@ -206,13 +206,13 @@ export function ProductTable({
             items-center
             rounded-lg
             border
-            border-[#343A40]
-            bg-[#20242A]
+            border-[var(--tt-border-strong)]
+            bg-[var(--tt-bg-hover)]
             px-2.5
             py-1.5
             text-[11px]
             font-semibold
-            text-[#AEB4B9]
+            text-[var(--tt-text-dropdown)]
           "
         >
           {GENDER_LABELS[product.gender]}
@@ -223,9 +223,9 @@ export function ProductTable({
     {
       key: "color",
       header: "Color",
-      className: "bg-[#101214]",
+      className: "bg-[var(--tt-bg-page)]",
       render: (product) => (
-        <span className="text-sm text-[#AEB4B9]">
+        <span className="text-sm text-[var(--tt-text-dropdown)]">
           {getColorValues(product)}
         </span>
       ),
@@ -234,7 +234,7 @@ export function ProductTable({
     {
       key: "price",
       header: "Precio",
-       className: "bg-[#101214]",
+       className: "bg-[var(--tt-bg-page)]",
       render: (product) => (
         <span
           className="
@@ -256,14 +256,14 @@ export function ProductTable({
     {
       key: "createdAt",
       header: "Creado",
-       className: "bg-[#101214]",
+       className: "bg-[var(--tt-bg-page)]",
       render: (product) => (
         <span
           className="
             whitespace-nowrap
             text-xs
             font-medium
-            text-[#858D95]
+            text-[var(--tt-text-faint)]
           "
         >
           {new Intl.DateTimeFormat("es-AR", {
@@ -276,7 +276,7 @@ export function ProductTable({
     {
       key: "actions",
       header: "",
-      className: "w-16 text-right  bg-[#101214]",
+      className: "w-16 text-right  bg-[var(--tt-bg-page)]",
       render: (product) => (
         <DropdownMenu>
           <DropdownMenuTrigger
@@ -290,16 +290,16 @@ export function ProductTable({
               border
               border-transparent
               bg-transparent
-              text-[#737B83]
+              text-[var(--tt-text-muted)]
               outline-none
               transition-all
               duration-200
-              hover:border-[#343A40]
-              hover:bg-[#20242A]
-              hover:text-[#EDEEEB]
-              focus-visible:border-[#4A5057]
+              hover:border-[var(--tt-border-strong)]
+              hover:bg-[var(--tt-bg-hover)]
+              hover:text-[var(--tt-text-primary-alt)]
+              focus-visible:border-[var(--tt-border-focus)]
               focus-visible:ring-2
-              focus-visible:ring-[#D6A46A]/20
+              focus-visible:ring-[var(--tt-accent)]/20
             "
             aria-label={`Acciones para ${product.name}`}
           >
@@ -313,10 +313,10 @@ export function ProductTable({
               min-w-[175px]
               rounded-xl
               border
-              border-[#343A40]
-              bg-[#181B1F]
+              border-[var(--tt-border-strong)]
+              bg-[var(--tt-bg-surface)]
               p-1.5
-              text-[#EDEEEB]
+              text-[var(--tt-text-primary-alt)]
               shadow-[0_18px_40px_rgba(0,0,0,0.35)]
             "
           >
@@ -329,12 +329,12 @@ export function ProductTable({
                 py-2.5
                 text-xs
                 font-medium
-                text-[#AEB4B9]
+                text-[var(--tt-text-dropdown)]
                 outline-none
                 transition-all
                 duration-200
-                focus:bg-[#20242A]
-                focus:text-[#F1F2EF]
+                focus:bg-[var(--tt-bg-hover)]
+                focus:text-[var(--tt-text-primary-alt2)]
               "
             >
               <Edit
@@ -342,10 +342,10 @@ export function ProductTable({
                   mr-2.5
                   h-4
                   w-4
-                  text-[#8B9299]
+                  text-[var(--tt-text-icon-muted)]
                   transition-colors
                   duration-200
-                  group-hover:text-[#D6A46A]
+                  group-hover:text-[var(--tt-accent)]
                 "
               />
               Editar
@@ -360,12 +360,12 @@ export function ProductTable({
                 py-2.5
                 text-xs
                 font-medium
-                text-[#C99A9D]
+                text-[var(--tt-danger-text)]
                 outline-none
                 transition-all
                 duration-200
-                focus:bg-[#281E20]
-                focus:text-[#D8A4A7]
+                focus:bg-[var(--tt-danger-bg-hover)]
+                focus:text-[var(--tt-danger-text-hover)]
               "
             >
               <Trash2
@@ -373,7 +373,7 @@ export function ProductTable({
                   mr-2.5
                   h-4
                   w-4
-                  text-[#C99A9D]
+                  text-[var(--tt-danger-text)]
                 "
               />
               Eliminar

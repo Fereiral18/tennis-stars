@@ -42,7 +42,7 @@ interface SaleTableProps {
   ) => void;
 }
 
-const CELL_BG = "bg-[#101214]";
+const CELL_BG = "bg-[var(--tt-bg-page)]";
 
 export function SaleTable({
   sales,
@@ -70,13 +70,13 @@ export function SaleTable({
         render: (sale) => (
           <div>
             <p
-              className="font-mono text-sm font-semibold text-[#EDEEEB]"
+              className="font-mono text-sm font-semibold text-[var(--tt-text-primary-alt)]"
               title={sale.id}
             >
               {formatSaleCode(sale.id)}
             </p>
 
-            <p className="mt-0.5 text-xs text-[#7F878F]">
+            <p className="mt-0.5 text-xs text-[var(--tt-text-tertiary)]">
               {new Intl.DateTimeFormat(
                 "es-AR",
                 {
@@ -100,11 +100,11 @@ export function SaleTable({
 
         render: (sale) => (
           <div className="min-w-[160px] max-w-[220px]">
-            <p className="truncate font-medium text-[#EDEEEB]">
+            <p className="truncate font-medium text-[var(--tt-text-primary-alt)]">
               {sale.customerName}
             </p>
 
-            <p className="mt-0.5 truncate text-xs text-[#7F878F]">
+            <p className="mt-0.5 truncate text-xs text-[var(--tt-text-tertiary)]">
               {sale.customerEmail}
             </p>
           </div>
@@ -122,14 +122,14 @@ export function SaleTable({
 
           return (
             <div className="flex items-center gap-2">
-              <Package className="h-4 w-4 shrink-0 text-[#656D75]" />
+              <Package className="h-4 w-4 shrink-0 text-[var(--tt-text-icon-secondary)]" />
 
               <div className="min-w-0">
                 <p className="max-w-[180px] truncate font-medium text-[#C1C5C9]">
                   {item.productName}
                 </p>
 
-                <p className="text-xs text-[#7F878F]">
+                <p className="text-xs text-[var(--tt-text-tertiary)]">
                   Cantidad:{" "}
                   {item.quantity}
                 </p>
@@ -208,7 +208,7 @@ export function SaleTable({
                 sale,
               )
             }
-            className="inline-flex items-center gap-1.5 rounded-lg border border-[#343A40] bg-[#20242A] px-2.5 py-1.5 text-xs font-medium text-[#AEB4B9] transition hover:border-[#4A5057] hover:bg-[#262B31] hover:text-[#F1F2EF]"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--tt-border-strong)] bg-[var(--tt-bg-hover)] px-2.5 py-1.5 text-xs font-medium text-[var(--tt-text-dropdown)] transition hover:border-[var(--tt-border-focus)] hover:bg-[#262B31] hover:text-[var(--tt-text-primary-alt2)]"
           >
             <Eye className="h-3.5 w-3.5" />
 
@@ -225,7 +225,7 @@ export function SaleTable({
         render: (sale) => (
           <DropdownMenu>
             <DropdownMenuTrigger
-              className="flex h-9 w-9 items-center justify-center rounded-xl border border-transparent bg-transparent text-[#737B83] outline-none transition-all duration-200 hover:border-[#343A40] hover:bg-[#20242A] hover:text-[#EDEEEB] focus-visible:border-[#4A5057] focus-visible:ring-2 focus-visible:ring-[#D6A46A]/20"
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-transparent bg-transparent text-[var(--tt-text-muted)] outline-none transition-all duration-200 hover:border-[var(--tt-border-strong)] hover:bg-[var(--tt-bg-hover)] hover:text-[var(--tt-text-primary-alt)] focus-visible:border-[var(--tt-border-focus)] focus-visible:ring-2 focus-visible:ring-[var(--tt-accent)]/20"
               aria-label={`Cambiar estado de la venta ${formatSaleCode(sale.id)}`}
             >
               <MoreHorizontal className="h-[18px] w-[18px]" />
@@ -234,7 +234,7 @@ export function SaleTable({
             <DropdownMenuContent
               align="end"
               sideOffset={6}
-              className="min-w-[190px] rounded-xl border border-[#343A40] bg-[#181B1F] p-1.5 text-[#EDEEEB] shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
+              className="min-w-[190px] rounded-xl border border-[var(--tt-border-strong)] bg-[var(--tt-bg-surface)] p-1.5 text-[var(--tt-text-primary-alt)] shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
             >
               <DropdownMenuItem
                 disabled={
@@ -246,9 +246,9 @@ export function SaleTable({
                     "PREPARING",
                   )
                 }
-                className="cursor-pointer rounded-lg px-3 py-2.5 text-xs font-medium text-[#AEB4B9] outline-none transition-all duration-200 focus:bg-[#20242A] focus:text-[#F1F2EF]"
+                className="cursor-pointer rounded-lg px-3 py-2.5 text-xs font-medium text-[var(--tt-text-dropdown)] outline-none transition-all duration-200 focus:bg-[var(--tt-bg-hover)] focus:text-[var(--tt-text-primary-alt2)]"
               >
-                <PackageCheck className="mr-2.5 h-4 w-4 text-[#8B9299]" />
+                <PackageCheck className="mr-2.5 h-4 w-4 text-[var(--tt-text-icon-muted)]" />
                 En preparación
               </DropdownMenuItem>
 
@@ -262,9 +262,9 @@ export function SaleTable({
                     "SHIPPED",
                   )
                 }
-                className="cursor-pointer rounded-lg px-3 py-2.5 text-xs font-medium text-[#AEB4B9] outline-none transition-all duration-200 focus:bg-[#20242A] focus:text-[#F1F2EF]"
+                className="cursor-pointer rounded-lg px-3 py-2.5 text-xs font-medium text-[var(--tt-text-dropdown)] outline-none transition-all duration-200 focus:bg-[var(--tt-bg-hover)] focus:text-[var(--tt-text-primary-alt2)]"
               >
-                <Truck className="mr-2.5 h-4 w-4 text-[#8B9299]" />
+                <Truck className="mr-2.5 h-4 w-4 text-[var(--tt-text-icon-muted)]" />
                 Enviado
               </DropdownMenuItem>
 
@@ -278,9 +278,9 @@ export function SaleTable({
                     "CANCELLED",
                   )
                 }
-                className="cursor-pointer rounded-lg px-3 py-2.5 text-xs font-medium text-[#C99A9D] outline-none transition-all duration-200 focus:bg-[#281E20] focus:text-[#D8A4A7]"
+                className="cursor-pointer rounded-lg px-3 py-2.5 text-xs font-medium text-[var(--tt-danger-text)] outline-none transition-all duration-200 focus:bg-[var(--tt-danger-bg-hover)] focus:text-[var(--tt-danger-text-hover)]"
               >
-                <XCircle className="mr-2.5 h-4 w-4 text-[#C99A9D]" />
+                <XCircle className="mr-2.5 h-4 w-4 text-[var(--tt-danger-text)]" />
                 Cancelado
               </DropdownMenuItem>
             </DropdownMenuContent>

@@ -60,9 +60,9 @@ export function Sidebar({ onClose }: SidebarProps) {
         w-72
         flex-col
         border-r
-        border-[#292E34]
-        bg-[#141619]
-        text-[#F5F5F2]
+        border-[var(--tt-border)]
+        bg-[var(--tt-bg-header)]
+        text-[var(--tt-text-primary)]
       "
     >
       {/* =========================================================
@@ -76,7 +76,7 @@ export function Sidebar({ onClose }: SidebarProps) {
           items-center
           justify-between
           border-b
-          border-[#292E34]
+          border-[var(--tt-border)]
           px-5
         "
       >
@@ -95,8 +95,8 @@ export function Sidebar({ onClose }: SidebarProps) {
               rounded-xl
               border
               border-[#554533]
-              bg-[#29231D]
-              text-[#D6A46A]
+              bg-[var(--tt-avatar-bg)]
+              text-[var(--tt-avatar-text)]
               shadow-[0_8px_20px_rgba(0,0,0,0.18)]
             "
           >
@@ -111,7 +111,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                 h-8
                 w-8
                 rounded-full
-                bg-[#D6A46A]/10
+                bg-[var(--tt-accent)]/10
                 blur-lg
               "
             />
@@ -120,11 +120,11 @@ export function Sidebar({ onClose }: SidebarProps) {
           {/* Brand */}
 
           <div>
-            <p className="text-sm font-semibold tracking-tight text-[#F5F5F2]">
+            <p className="text-sm font-semibold tracking-tight text-[var(--tt-text-primary)]">
               Court Store
             </p>
 
-            <p className="mt-0.5 text-[11px] font-medium text-[#7F878F]">
+            <p className="mt-0.5 text-[11px] font-medium text-[var(--tt-text-tertiary)]">
               Sneaker Admin
             </p>
           </div>
@@ -139,10 +139,10 @@ export function Sidebar({ onClose }: SidebarProps) {
             className="
               rounded-xl
               p-2
-              text-[#7F878F]
+              text-[var(--tt-text-tertiary)]
               transition
-              hover:bg-[#20242A]
-              hover:text-[#F5F5F2]
+              hover:bg-[var(--tt-bg-hover)]
+              hover:text-[var(--tt-text-primary)]
               lg:hidden
             "
             aria-label="Cerrar menú"
@@ -165,7 +165,7 @@ export function Sidebar({ onClose }: SidebarProps) {
             font-semibold
             uppercase
             tracking-[0.16em]
-            text-[#666E76]
+            text-[var(--tt-text-section-label)]
           "
         >
           Menú principal
@@ -197,14 +197,14 @@ export function Sidebar({ onClose }: SidebarProps) {
                   `,
                   isActive
                     ? `
-                      bg-[#29231D]
-                      text-[#F3E5D4]
+                      bg-[var(--tt-avatar-bg)]
+                      text-[var(--tt-warm-foreground)]
                       shadow-[0_8px_20px_rgba(0,0,0,0.14)]
                     `
                     : `
-                      text-[#8D959C]
-                      hover:bg-[#1D2126]
-                      hover:text-[#F1F2EF]
+                      text-[var(--tt-text-nav-inactive)]
+                      hover:bg-[var(--tt-bg-hover-alt)]
+                      hover:text-[var(--tt-text-primary-alt2)]
                     `,
                 ].join(" ")
               }
@@ -223,7 +223,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                         w-0.5
                         -translate-y-1/2
                         rounded-full
-                        bg-[#D6A46A]
+                        bg-[var(--tt-accent)]
                       "
                     />
                   )}
@@ -241,8 +241,8 @@ export function Sidebar({ onClose }: SidebarProps) {
                       duration-200
                       ${
                         isActive
-                          ? "border border-[#574936] bg-[#302820] text-[#D6A46A]"
-                          : "bg-transparent text-[#737B83] group-hover:bg-[#252A30] group-hover:text-[#C1C6CA]"
+                          ? "border border-[var(--tt-accent-border)] bg-[var(--tt-accent-chip-bg)] text-[var(--tt-avatar-text)]"
+                          : "bg-transparent text-[var(--tt-text-muted)] group-hover:bg-[var(--tt-bg-hover-soft)] group-hover:text-[var(--tt-text-nav-hover)]"
                       }
                     `}
                   >
@@ -260,7 +260,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                         h-1.5
                         w-1.5
                         rounded-full
-                        bg-[#D6A46A]
+                        bg-[var(--tt-accent)]
                         shadow-[0_0_8px_rgba(214,164,106,0.45)]
                       "
                     />
@@ -281,8 +281,8 @@ export function Sidebar({ onClose }: SidebarProps) {
           className="
             rounded-2xl
             border
-            border-[#292E34]
-            bg-[#191C20]
+            border-[var(--tt-border)]
+            bg-[var(--tt-bg-muted)]
             p-3.5
           "
         >
@@ -300,21 +300,21 @@ export function Sidebar({ onClose }: SidebarProps) {
                 rounded-xl
                 border
                 border-[#3F382F]
-                bg-[#29231D]
+                bg-[var(--tt-avatar-bg)]
                 text-sm
                 font-semibold
-                text-[#D6A46A]
+                text-[var(--tt-avatar-text)]
               "
             >
               A
             </div>
 
             <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-[#EDEEEB]">
+              <p className="truncate text-sm font-semibold text-[var(--tt-text-primary-alt)]">
                 Administrador
               </p>
 
-              <p className="mt-0.5 truncate text-[11px] text-[#737B83]">
+              <p className="mt-0.5 truncate text-[11px] text-[var(--tt-text-muted)]">
                 admin@courtstore.com
               </p>
             </div>
@@ -328,7 +328,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                 w-2
                 shrink-0
                 rounded-full
-                bg-[#8BA78D]
+                bg-[var(--tt-success)]
                 shadow-[0_0_8px_rgba(139,167,141,0.35)]
               "
             />
@@ -340,7 +340,7 @@ export function Sidebar({ onClose }: SidebarProps) {
           LOGOUT
       ========================================================== */}
 
-      <div className="border-t border-[#292E34] p-4">
+      <div className="border-t border-[var(--tt-border)] p-4">
         <button
           type="button"
           onClick={handleLogout}
@@ -355,10 +355,10 @@ export function Sidebar({ onClose }: SidebarProps) {
             py-3
             text-sm
             font-medium
-            text-[#858D95]
+            text-[var(--tt-text-faint)]
             transition-all
             duration-200
-            hover:bg-[#211D1B]
+            hover:bg-[var(--tt-accent-chip-bg-hover)]
             hover:text-[#D8B18A]
           "
         >
@@ -370,10 +370,10 @@ export function Sidebar({ onClose }: SidebarProps) {
               items-center
               justify-center
               rounded-lg
-              bg-[#1D2126]
+              bg-[var(--tt-bg-hover-alt)]
               transition-colors
               duration-200
-              group-hover:bg-[#302820]
+              group-hover:bg-[var(--tt-accent-chip-bg)]
             "
           >
             <LogOut className="h-[17px] w-[17px]" />

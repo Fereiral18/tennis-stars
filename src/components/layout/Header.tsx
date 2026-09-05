@@ -1,13 +1,17 @@
 import {
-  Bell,
   Menu,
+  Moon,
+  Sun,
 } from "lucide-react";
+
+import { useTheme } from "../../app/providers/ThemeProvider";
 
 interface HeaderProps {
   onMenuClick: () => void;
 }
 
 export function Header({ onMenuClick }: HeaderProps) {
+  const { theme, toggleTheme } = useTheme();
   return (
     <header
       className="
@@ -16,8 +20,8 @@ export function Header({ onMenuClick }: HeaderProps) {
         items-center
         justify-between
         border-b
-        border-[#292E34]
-        bg-[#141619]
+        border-[var(--tt-border)]
+        bg-[var(--tt-bg-header)]
         px-4
         sm:px-6
         lg:px-8
@@ -38,14 +42,14 @@ export function Header({ onMenuClick }: HeaderProps) {
           justify-center
           rounded-xl
           border
-          border-[#292E34]
-          bg-[#191C20]
-          text-[#8F969D]
+          border-[var(--tt-border)]
+          bg-[var(--tt-bg-muted)]
+          text-[var(--tt-text-secondary)]
           transition-all
           duration-200
-          hover:border-[#3A4047]
-          hover:bg-[#20242A]
-          hover:text-[#F5F5F2]
+          hover:border-[var(--tt-border-hover)]
+          hover:bg-[var(--tt-bg-hover)]
+          hover:text-[var(--tt-text-primary)]
           lg:hidden
         "
         aria-label="Abrir menú"
@@ -58,11 +62,11 @@ export function Header({ onMenuClick }: HeaderProps) {
       ========================================================== */}
 
       <div className="hidden lg:block">
-        <p className="text-sm font-semibold tracking-tight text-[#F1F2EF]">
+        <p className="text-sm font-semibold tracking-tight text-[var(--tt-text-primary-alt2)]">
           Panel de administración
         </p>
 
-        <p className="mt-0.5 text-xs text-[#737B83]">
+        <p className="mt-0.5 text-xs text-[var(--tt-text-muted)]">
           Gestioná tu tienda de zapatillas
         </p>
       </div>
@@ -73,11 +77,12 @@ export function Header({ onMenuClick }: HeaderProps) {
 
       <div className="ml-auto flex items-center gap-3">
         {/* =======================================================
-            NOTIFICATIONS
+            THEME TOGGLE
         ======================================================== */}
 
         <button
           type="button"
+          onClick={toggleTheme}
           className="
             group
             relative
@@ -88,38 +93,31 @@ export function Header({ onMenuClick }: HeaderProps) {
             justify-center
             rounded-xl
             border
-            border-[#292E34]
-            bg-[#191C20]
-            text-[#858D95]
+            border-[var(--tt-border)]
+            bg-[var(--tt-bg-muted)]
+            text-[var(--tt-text-faint)]
             transition-all
             duration-200
-            hover:border-[#3A4047]
-            hover:bg-[#20242A]
-            hover:text-[#F1F2EF]
+            hover:border-[var(--tt-border-hover)]
+            hover:bg-[var(--tt-bg-hover)]
+            hover:text-[var(--tt-text-primary-alt2)]
           "
-          aria-label="Notificaciones"
+          aria-label={
+            theme === "dark"
+              ? "Cambiar a modo claro"
+              : "Cambiar a modo oscuro"
+          }
         >
-          <Bell className="h-[17px] w-[17px] transition-transform duration-200 group-hover:scale-105" />
-
-          {/* Notification indicator */}
-
-          <span
-            className="
-              absolute
-              right-2
-              top-2
-              h-1.5
-              w-1.5
-              rounded-full
-              bg-[#D6A46A]
-              shadow-[0_0_8px_rgba(214,164,106,0.45)]
-            "
-          />
+          {theme === "dark" ? (
+            <Sun className="h-[17px] w-[17px] transition-transform duration-200 group-hover:scale-105" />
+          ) : (
+            <Moon className="h-[17px] w-[17px] transition-transform duration-200 group-hover:scale-105" />
+          )}
         </button>
 
         {/* Divider */}
 
-        <div className="hidden h-8 w-px bg-[#292E34] sm:block" />
+        <div className="hidden h-8 w-px bg-[var(--tt-border)] sm:block" />
 
         {/* =======================================================
             USER
@@ -137,8 +135,8 @@ export function Header({ onMenuClick }: HeaderProps) {
             py-1.5
             transition-colors
             duration-200
-            hover:border-[#292E34]
-            hover:bg-[#191C20]
+            hover:border-[var(--tt-border)]
+            hover:bg-[var(--tt-bg-muted)]
           "
         >
           {/* Avatar */}
@@ -153,11 +151,11 @@ export function Header({ onMenuClick }: HeaderProps) {
               justify-center
               rounded-xl
               border
-              border-[#40382F]
-              bg-[#29231D]
+              border-[var(--tt-avatar-border)]
+              bg-[var(--tt-avatar-bg)]
               text-xs
               font-semibold
-              text-[#D6A46A]
+              text-[var(--tt-avatar-text)]
             "
           >
             A
@@ -166,11 +164,11 @@ export function Header({ onMenuClick }: HeaderProps) {
           {/* User information */}
 
           <div className="hidden sm:block">
-            <p className="text-xs font-semibold text-[#EDEEEB]">
+            <p className="text-xs font-semibold text-[var(--tt-text-primary-alt)]">
               Administrador
             </p>
 
-            <p className="mt-0.5 text-[11px] text-[#737B83]">
+            <p className="mt-0.5 text-[11px] text-[var(--tt-text-muted)]">
               Admin
             </p>
           </div>

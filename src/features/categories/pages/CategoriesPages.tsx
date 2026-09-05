@@ -106,10 +106,10 @@ export function CategoriesPage() {
   const isSaving = isCreating || isUpdating;
 
   const pageWrapperClassName =
-    "min-h-full space-y-6 bg-[#101214] p-4 text-[#F5F5F2] sm:p-6 lg:p-8";
+    "min-h-full space-y-6 bg-[var(--tt-bg-page)] p-4 text-[var(--tt-text-primary)] sm:p-6 lg:p-8";
 
   const createButtonClassName =
-    "group inline-flex items-center justify-center gap-2 rounded-xl border border-[#574936] bg-[#D6A46A] px-4 py-2.5 text-sm font-semibold text-[#171411] shadow-[0_8px_20px_rgba(0,0,0,0.16)] transition-all duration-200 hover:border-[#6A5841] hover:bg-[#E0B77F] hover:shadow-[0_12px_26px_rgba(0,0,0,0.22)] active:scale-[0.98]";
+    "group inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--tt-accent-border)] bg-[var(--tt-accent)] px-4 py-2.5 text-sm font-semibold text-[var(--tt-accent-foreground)] shadow-[0_8px_20px_rgba(0,0,0,0.16)] transition-all duration-200 hover:border-[var(--tt-accent-border-hover)] hover:bg-[var(--tt-accent-hover)] hover:shadow-[0_12px_26px_rgba(0,0,0,0.22)] active:scale-[0.98]";
 
   if (isLoading) {
     return (
@@ -132,7 +132,7 @@ export function CategoriesPage() {
           description="Administrá las categorías de tu tienda."
         />
 
-        <div className="overflow-hidden rounded-3xl border border-[#3D3435] bg-[#181B1F] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+        <div className="overflow-hidden rounded-3xl border border-[var(--tt-border-danger)] bg-[var(--tt-bg-surface)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
           <EmptyState
             title="No fue posible cargar las categorías"
             description="Ocurrió un error al consultar los datos."
@@ -160,7 +160,7 @@ export function CategoriesPage() {
       />
 
       {categories.length === 0 ? (
-        <div className="overflow-hidden rounded-3xl border border-dashed border-[#343A40] bg-[#181B1F] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+        <div className="overflow-hidden rounded-3xl border border-dashed border-[var(--tt-border-strong)] bg-[var(--tt-bg-surface)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
           <EmptyState
             title="No hay categorías"
             description="Creá tu primera categoría para comenzar a organizar los productos."
@@ -168,7 +168,7 @@ export function CategoriesPage() {
               <button
                 type="button"
                 onClick={handleCreate}
-                className="inline-flex items-center gap-2 rounded-xl border border-[#574936] bg-[#D6A46A] px-4 py-2 text-sm font-semibold text-[#171411] transition hover:bg-[#E0B77F]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[var(--tt-accent-border)] bg-[var(--tt-accent)] px-4 py-2 text-sm font-semibold text-[var(--tt-accent-foreground)] transition hover:bg-[var(--tt-accent-hover)]"
               >
                 <Plus className="h-4 w-4" />
                 Crear categoría
@@ -177,7 +177,7 @@ export function CategoriesPage() {
           />
         </div>
       ) : (
-        <div className="overflow-hidden rounded-3xl border border-[#292E34] bg-[#101214] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+        <div className="overflow-hidden rounded-3xl border border-[var(--tt-border)] bg-[var(--tt-bg-page)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
           <CategoryTable
             categories={categories}
             onEdit={handleEdit}
