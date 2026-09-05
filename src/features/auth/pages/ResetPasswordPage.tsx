@@ -84,9 +84,7 @@ export function ResetPasswordPage() {
     <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-4 py-8">
       <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl sm:p-10">
         <div className="mb-8">
-          <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-lime-100 text-xl">
-            🎾
-          </div>
+         
 
           <h2 className="text-2xl font-semibold text-zinc-950">
             Cambiar contraseña
