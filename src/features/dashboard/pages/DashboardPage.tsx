@@ -291,7 +291,7 @@ export function DashboardPage() {
                 transition-all
                 duration-300
                 hover:border-[var(--tt-border-hover)]
-                hover:bg-[#1C2025]
+                hover:bg-[#DFE7FD]
                 hover:shadow-[0_18px_40px_rgba(0,0,0,0.22)]
               "
             >
