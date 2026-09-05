@@ -35,7 +35,7 @@ export function DashboardPage() {
 
   if (isError) {
     return (
-      <div className="min-h-full bg-[#101214] p-4 text-[#F5F5F2] sm:p-6 lg:p-8">
+      <div className="min-h-full bg-[var(--tt-bg-page)] p-4 text-[var(--tt-text-primary)] sm:p-6 lg:p-8">
         <div className="mx-auto max-w-7xl">
           <PageHeader
             title="Dashboard"
@@ -47,8 +47,8 @@ export function DashboardPage() {
               mt-8
               rounded-3xl
               border
-              border-[#2A2F35]
-              bg-[#181B1F]
+              border-[var(--tt-bg-surface-alt)]
+              bg-[var(--tt-bg-surface)]
               p-6
               shadow-[0_20px_50px_rgba(0,0,0,0.20)]
             "
@@ -64,7 +64,7 @@ export function DashboardPage() {
   }
 
   return (
-    <div className="relative min-h-full overflow-hidden bg-[#101214] text-[#F5F5F2]">
+    <div className="relative min-h-full overflow-hidden bg-[var(--tt-bg-page)] text-[var(--tt-text-primary)]">
       {/* =========================================================
           BACKGROUND
       ========================================================== */}
@@ -78,7 +78,7 @@ export function DashboardPage() {
             h-[480px]
             w-[480px]
             rounded-full
-            bg-[#D6A46A]/[0.06]
+            bg-[var(--tt-accent)]/[0.06]
             blur-[120px]
           "
         />
@@ -118,8 +118,8 @@ export function DashboardPage() {
             overflow-hidden
             rounded-3xl
             border
-            border-[#2A2F35]
-            bg-[#181B1F]
+            border-[var(--tt-bg-surface-alt)]
+            bg-[var(--tt-bg-surface)]
             p-6
             shadow-[0_20px_50px_rgba(0,0,0,0.18)]
             sm:p-7
@@ -135,7 +135,7 @@ export function DashboardPage() {
               h-52
               w-52
               rounded-full
-              bg-[#D6A46A]/[0.07]
+              bg-[var(--tt-accent)]/[0.07]
               blur-[70px]
             "
           />
@@ -151,12 +151,12 @@ export function DashboardPage() {
                   rounded-full
                   border
                   border-[#353A40]
-                  bg-[#20242A]
+                  bg-[var(--tt-bg-hover)]
                   px-3
                   py-1.5
                 "
               >
-                <Sparkles className="h-3.5 w-3.5 text-[#D6A46A]" />
+                <Sparkles className="h-3.5 w-3.5 text-[var(--tt-accent)]" />
 
                 <span
                   className="
@@ -202,12 +202,12 @@ export function DashboardPage() {
                     w-full
                     animate-ping
                     rounded-full
-                    bg-[#8BA78D]
+                    bg-[var(--tt-success)]
                     opacity-60
                   "
                 />
 
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#8BA78D]" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--tt-success)]" />
               </span>
 
               <span className="text-xs font-medium text-[#AFC0B2]">
@@ -253,14 +253,14 @@ export function DashboardPage() {
         >
           <div className="mb-4">
             <div className="flex items-center gap-2">
-              <TrendingUp className="h-4 w-4 text-[#D6A46A]" />
+              <TrendingUp className="h-4 w-4 text-[var(--tt-accent)]" />
 
-              <h2 className="text-base font-semibold tracking-tight text-[#F5F5F2]">
+              <h2 className="text-base font-semibold tracking-tight text-[var(--tt-text-primary)]">
                 Acciones rápidas
               </h2>
             </div>
 
-            <p className="mt-1 text-sm text-[#8F969D]">
+            <p className="mt-1 text-sm text-[var(--tt-text-secondary)]">
               Accedé rápidamente a las principales operaciones.
             </p>
           </div>
@@ -283,14 +283,14 @@ export function DashboardPage() {
                 justify-between
                 rounded-2xl
                 border
-                border-[#2A2F35]
-                bg-[#181B1F]
+                border-[var(--tt-bg-surface-alt)]
+                bg-[var(--tt-bg-surface)]
                 p-5
                 text-left
                 shadow-[0_12px_30px_rgba(0,0,0,0.14)]
                 transition-all
                 duration-300
-                hover:border-[#3A4047]
+                hover:border-[var(--tt-border-hover)]
                 hover:bg-[#1C2025]
                 hover:shadow-[0_18px_40px_rgba(0,0,0,0.22)]
               "
@@ -307,23 +307,23 @@ export function DashboardPage() {
                     rounded-2xl
                     border
                     border-[#40372D]
-                    bg-[#29231D]
-                    text-[#D6A46A]
+                    bg-[var(--tt-avatar-bg)]
+                    text-[var(--tt-accent)]
                     transition-all
                     duration-300
-                    group-hover:border-[#574936]
-                    group-hover:bg-[#302820]
+                    group-hover:border-[var(--tt-accent-border)]
+                    group-hover:bg-[var(--tt-accent-chip-bg)]
                   "
                 >
                   <PackagePlus className="h-5 w-5" />
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold text-[#F1F2EF]">
+                  <p className="text-sm font-semibold text-[var(--tt-text-primary-alt2)]">
                     Productos
                   </p>
 
-                  <p className="mt-1 text-xs text-[#8F969D]">
+                  <p className="mt-1 text-xs text-[var(--tt-text-secondary)]">
                     Administrar productos
                   </p>
                 </div>
@@ -339,22 +339,22 @@ export function DashboardPage() {
                   rounded-full
                   border
                   border-[#30353B]
-                  bg-[#20242A]
+                  bg-[var(--tt-bg-hover)]
                   transition-all
                   duration-300
-                  group-hover:border-[#4A5057]
-                  group-hover:bg-[#292E34]
+                  group-hover:border-[var(--tt-border-focus)]
+                  group-hover:bg-[var(--tt-border)]
                 "
               >
                 <ArrowRight
                   className="
                     h-4
                     w-4
-                    text-[#8F969D]
+                    text-[var(--tt-text-secondary)]
                     transition-transform
                     duration-300
                     group-hover:translate-x-0.5
-                    group-hover:text-[#D6A46A]
+                    group-hover:text-[var(--tt-accent)]
                   "
                 />
               </div>
@@ -377,14 +377,14 @@ export function DashboardPage() {
                 justify-between
                 rounded-2xl
                 border
-                border-[#2A2F35]
-                bg-[#181B1F]
+                border-[var(--tt-bg-surface-alt)]
+                bg-[var(--tt-bg-surface)]
                 p-5
                 text-left
                 shadow-[0_12px_30px_rgba(0,0,0,0.14)]
                 transition-all
                 duration-300
-                hover:border-[#3A4047]
+                hover:border-[var(--tt-border-hover)]
                 hover:bg-[#1C2025]
                 hover:shadow-[0_18px_40px_rgba(0,0,0,0.22)]
               "
@@ -413,11 +413,11 @@ export function DashboardPage() {
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold text-[#F1F2EF]">
+                  <p className="text-sm font-semibold text-[var(--tt-text-primary-alt2)]">
                     Categorías
                   </p>
 
-                  <p className="mt-1 text-xs text-[#8F969D]">
+                  <p className="mt-1 text-xs text-[var(--tt-text-secondary)]">
                     Administrar categorías
                   </p>
                 </div>
@@ -433,18 +433,18 @@ export function DashboardPage() {
                   rounded-full
                   border
                   border-[#30353B]
-                  bg-[#20242A]
+                  bg-[var(--tt-bg-hover)]
                   transition-all
                   duration-300
-                  group-hover:border-[#4A5057]
-                  group-hover:bg-[#292E34]
+                  group-hover:border-[var(--tt-border-focus)]
+                  group-hover:bg-[var(--tt-border)]
                 "
               >
                 <ArrowRight
                   className="
                     h-4
                     w-4
-                    text-[#8F969D]
+                    text-[var(--tt-text-secondary)]
                     transition-transform
                     duration-300
                     group-hover:translate-x-0.5
@@ -496,7 +496,7 @@ export function DashboardPage() {
                     border
                     border-[#624D38]
                     bg-[#30271F]
-                    text-[#E0B77F]
+                    text-[var(--tt-accent-hover)]
                     transition-all
                     duration-300
                     group-hover:border-[#806344]
@@ -527,7 +527,7 @@ export function DashboardPage() {
                   rounded-full
                   border
                   border-[#584735]
-                  bg-[#302820]
+                  bg-[var(--tt-accent-chip-bg)]
                   transition-all
                   duration-300
                   group-hover:border-[#806344]
@@ -542,7 +542,7 @@ export function DashboardPage() {
                     transition-transform
                     duration-300
                     group-hover:translate-x-0.5
-                    group-hover:text-[#E0B77F]
+                    group-hover:text-[var(--tt-accent-hover)]
                   "
                 />
               </div>
@@ -565,11 +565,11 @@ export function DashboardPage() {
         >
           <div className="mb-4 flex items-end justify-between gap-4">
             <div>
-              <h2 className="text-base font-semibold tracking-tight text-[#F5F5F2]">
+              <h2 className="text-base font-semibold tracking-tight text-[var(--tt-text-primary)]">
                 Inventario
               </h2>
 
-              <p className="mt-1 text-sm text-[#8F969D]">
+              <p className="mt-1 text-sm text-[var(--tt-text-secondary)]">
                 Vista general de los productos registrados.
               </p>
             </div>
@@ -583,7 +583,7 @@ export function DashboardPage() {
                 font-semibold
                 text-[#A9B0B7]
                 transition-colors
-                hover:text-[#D6A46A]
+                hover:text-[var(--tt-accent)]
                 sm:block
               "
             >
@@ -596,8 +596,8 @@ export function DashboardPage() {
               overflow-hidden
               rounded-3xl
               border
-              border-[#2A2F35]
-              bg-[#181B1F]
+              border-[var(--tt-bg-surface-alt)]
+              bg-[var(--tt-bg-surface)]
               shadow-[0_20px_50px_rgba(0,0,0,0.18)]
             "
           >

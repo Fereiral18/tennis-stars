@@ -11,7 +11,7 @@ interface CustomerTableProps {
   customers: CustomerSummary[];
 }
 
-const CELL_BG = "bg-[#101214]";
+const CELL_BG = "bg-[var(--tt-bg-page)]";
 
 export function CustomerTable({
   customers,
@@ -25,16 +25,16 @@ export function CustomerTable({
 
         render: (customer) => (
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#343A40] bg-[#20242A] text-[#8B9299]">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--tt-border-strong)] bg-[var(--tt-bg-hover)] text-[var(--tt-text-icon-muted)]">
               <User className="h-4 w-4" />
             </div>
 
             <div className="min-w-0 max-w-[240px]">
-              <p className="truncate font-medium text-[#EDEEEB]">
+              <p className="truncate font-medium text-[var(--tt-text-primary-alt)]">
                 {customer.customerName}
               </p>
 
-              <p className="truncate text-xs text-[#7F878F]">
+              <p className="truncate text-xs text-[var(--tt-text-tertiary)]">
                 {customer.customerEmail}
               </p>
             </div>
@@ -49,7 +49,7 @@ export function CustomerTable({
 
         render: (customer) => (
           <div className="flex items-center gap-2 text-[#C1C5C9]">
-            <ShoppingBag className="h-4 w-4 shrink-0 text-[#656D75]" />
+            <ShoppingBag className="h-4 w-4 shrink-0 text-[var(--tt-text-icon-secondary)]" />
 
             <span className="font-medium">
               {customer.totalOrders}
@@ -71,8 +71,8 @@ export function CustomerTable({
               gap-1.5
               rounded-lg
               border
-              border-[#40382F]
-              bg-[#29231D]
+              border-[var(--tt-avatar-border)]
+              bg-[var(--tt-avatar-bg)]
               px-2.5
               py-1.5
               text-xs

@@ -23,7 +23,7 @@ const statusLabels: Record<Sale["status"], string> = {
 
 const statusStyles: Record<Sale["status"], string> = {
   PENDING:
-    "border-[#4A3B28] bg-[#29231D] text-[#D6A46A]",
+    "border-[#4A3B28] bg-[var(--tt-avatar-bg)] text-[var(--tt-accent)]",
   CONFIRMED:
     "border-[#334047] bg-[#20282C] text-[#9EB4BD]",
   PREPARING:
@@ -33,7 +33,7 @@ const statusStyles: Record<Sale["status"], string> = {
   DELIVERED:
     "border-[#304137] bg-[#1D2822] text-[#8FB6A0]",
   CANCELLED:
-    "border-[#493334] bg-[#281E20] text-[#C99A9D]",
+    "border-[#493334] bg-[var(--tt-danger-bg-hover)] text-[var(--tt-danger-text)]",
 };
 
 function formatCurrency(value: number): string {
@@ -67,8 +67,8 @@ export function RecentSales({
           rounded-3xl
           border
           border-dashed
-          border-[#343A40]
-          bg-[#181B1F]
+          border-[var(--tt-border-strong)]
+          bg-[var(--tt-bg-surface)]
           px-6
           text-center
         "
@@ -82,18 +82,18 @@ export function RecentSales({
             justify-center
             rounded-2xl
             border
-            border-[#343A40]
-            bg-[#20242A]
+            border-[var(--tt-border-strong)]
+            bg-[var(--tt-bg-hover)]
           "
         >
-          <ShoppingBag className="h-6 w-6 text-[#7F878F]" />
+          <ShoppingBag className="h-6 w-6 text-[var(--tt-text-tertiary)]" />
         </div>
 
-        <p className="mt-4 text-sm font-semibold text-[#EDEEEB]">
+        <p className="mt-4 text-sm font-semibold text-[var(--tt-text-primary-alt)]">
           No hay ventas registradas
         </p>
 
-        <p className="mt-1 max-w-xs text-xs leading-5 text-[#737B83]">
+        <p className="mt-1 max-w-xs text-xs leading-5 text-[var(--tt-text-muted)]">
           Las ventas realizadas aparecerán aquí automáticamente.
         </p>
       </div>
@@ -106,8 +106,8 @@ export function RecentSales({
         overflow-hidden
         rounded-3xl
         border
-        border-[#292E34]
-        bg-[#181B1F]
+        border-[var(--tt-border)]
+        bg-[var(--tt-bg-surface)]
         shadow-[0_12px_30px_rgba(0,0,0,0.14)]
       "
     >
@@ -119,7 +119,7 @@ export function RecentSales({
           justify-between
           gap-4
           border-b
-          border-[#292E34]
+          border-[var(--tt-border)]
           px-5
           py-4
           sm:px-6
@@ -136,19 +136,19 @@ export function RecentSales({
                 justify-center
                 rounded-xl
                 border
-                border-[#40382F]
-                bg-[#29231D]
+                border-[var(--tt-avatar-border)]
+                bg-[var(--tt-avatar-bg)]
               "
             >
-              <ShoppingBag className="h-4 w-4 text-[#D6A46A]" />
+              <ShoppingBag className="h-4 w-4 text-[var(--tt-accent)]" />
             </div>
 
             <div>
-              <h2 className="text-sm font-semibold text-[#F1F2EF]">
+              <h2 className="text-sm font-semibold text-[var(--tt-text-primary-alt2)]">
                 Ventas recientes
               </h2>
 
-              <p className="mt-0.5 text-xs text-[#737B83]">
+              <p className="mt-0.5 text-xs text-[var(--tt-text-muted)]">
                 Últimas ventas registradas
               </p>
             </div>
@@ -166,18 +166,18 @@ export function RecentSales({
             gap-1.5
             rounded-xl
             border
-            border-[#343A40]
-            bg-[#20242A]
+            border-[var(--tt-border-strong)]
+            bg-[var(--tt-bg-hover)]
             px-3
             py-2
             text-xs
             font-semibold
-            text-[#AEB4B9]
+            text-[var(--tt-text-dropdown)]
             transition-all
             duration-200
-            hover:border-[#4A5057]
-            hover:bg-[#292E34]
-            hover:text-[#F1F2EF]
+            hover:border-[var(--tt-border-focus)]
+            hover:bg-[var(--tt-border)]
+            hover:text-[var(--tt-text-primary-alt2)]
           "
         >
           Ver todas
@@ -198,7 +198,7 @@ export function RecentSales({
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full min-w-[760px]">
-          <thead className="border-b border-[#292E34] bg-[#15181B]">
+          <thead className="border-b border-[var(--tt-border)] bg-[#15181B]">
             <tr>
               <th
                 className="
@@ -209,7 +209,7 @@ export function RecentSales({
                   font-semibold
                   uppercase
                   tracking-[0.14em]
-                  text-[#6F777F]
+                  text-[var(--tt-text-icon-tertiary)]
                   sm:px-6
                 "
               >
@@ -225,7 +225,7 @@ export function RecentSales({
                   font-semibold
                   uppercase
                   tracking-[0.14em]
-                  text-[#6F777F]
+                  text-[var(--tt-text-icon-tertiary)]
                 "
               >
                 Producto
@@ -240,7 +240,7 @@ export function RecentSales({
                   font-semibold
                   uppercase
                   tracking-[0.14em]
-                  text-[#6F777F]
+                  text-[var(--tt-text-icon-tertiary)]
                 "
               >
                 Fecha
@@ -255,7 +255,7 @@ export function RecentSales({
                   font-semibold
                   uppercase
                   tracking-[0.14em]
-                  text-[#6F777F]
+                  text-[var(--tt-text-icon-tertiary)]
                 "
               >
                 Estado
@@ -270,7 +270,7 @@ export function RecentSales({
                   font-semibold
                   uppercase
                   tracking-[0.14em]
-                  text-[#6F777F]
+                  text-[var(--tt-text-icon-tertiary)]
                   sm:px-6
                 "
               >
@@ -290,7 +290,7 @@ export function RecentSales({
                     group
                     transition-colors
                     duration-200
-                    hover:bg-[#1D2126]
+                    hover:bg-[var(--tt-bg-hover-alt)]
                   "
                 >
                   {/* Cliente */}
@@ -306,14 +306,14 @@ export function RecentSales({
                           justify-center
                           rounded-xl
                           border
-                          border-[#343A40]
-                          bg-[#20242A]
-                          text-[#858D95]
+                          border-[var(--tt-border-strong)]
+                          bg-[var(--tt-bg-hover)]
+                          text-[var(--tt-text-faint)]
                           transition-all
                           duration-200
-                          group-hover:border-[#4A5057]
-                          group-hover:bg-[#292E34]
-                          group-hover:text-[#AEB4B9]
+                          group-hover:border-[var(--tt-border-focus)]
+                          group-hover:bg-[var(--tt-border)]
+                          group-hover:text-[var(--tt-text-dropdown)]
                         "
                       >
                         <User className="h-[17px] w-[17px]" />
@@ -325,10 +325,10 @@ export function RecentSales({
                             truncate
                             text-sm
                             font-semibold
-                            text-[#EDEEEB]
+                            text-[var(--tt-text-primary-alt)]
                             transition-colors
                             duration-200
-                            group-hover:text-[#F5F5F2]
+                            group-hover:text-[var(--tt-text-primary)]
                           "
                         >
                           {sale.customerName}
@@ -341,7 +341,7 @@ export function RecentSales({
                             className="
                               truncate
                               text-[11px]
-                              text-[#656D75]
+                              text-[var(--tt-text-icon-secondary)]
                             "
                           >
                             {sale.customerEmail}
@@ -366,7 +366,7 @@ export function RecentSales({
                       </p>
 
                       {firstItem && (
-                        <p className="mt-1 text-[11px] text-[#656D75]">
+                        <p className="mt-1 text-[11px] text-[var(--tt-text-icon-secondary)]">
                           Cantidad: {firstItem.quantity}
                         </p>
                       )}
@@ -381,7 +381,7 @@ export function RecentSales({
                       py-4
                       text-xs
                       font-medium
-                      text-[#858D95]
+                      text-[var(--tt-text-faint)]
                     "
                   >
                     {formatDate(sale.createdAt)}
@@ -452,14 +452,14 @@ export function RecentSales({
           items-center
           justify-between
           border-t
-          border-[#292E34]
+          border-[var(--tt-border)]
           bg-[#15181B]
           px-5
           py-3.5
           sm:px-6
         "
       >
-        <p className="text-[11px] text-[#656D75]">
+        <p className="text-[11px] text-[var(--tt-text-icon-secondary)]">
           Historial reciente de ventas
         </p>
 
@@ -469,7 +469,7 @@ export function RecentSales({
               h-1.5
               w-1.5
               rounded-full
-              bg-[#8BA78D]
+              bg-[var(--tt-success)]
               shadow-[0_0_7px_rgba(139,167,141,0.35)]
             "
           />

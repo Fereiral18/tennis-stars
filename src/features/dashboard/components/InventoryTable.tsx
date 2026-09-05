@@ -28,8 +28,8 @@ export function InventoryTable({
           rounded-3xl
           border
           border-dashed
-          border-[#343A40]
-          bg-[#181B1F]
+          border-[var(--tt-border-strong)]
+          bg-[var(--tt-bg-surface)]
           px-6
           text-center
         "
@@ -45,18 +45,18 @@ export function InventoryTable({
             justify-center
             rounded-2xl
             border
-            border-[#343A40]
-            bg-[#20242A]
+            border-[var(--tt-border-strong)]
+            bg-[var(--tt-bg-hover)]
           "
         >
-          <Package className="h-6 w-6 text-[#7F878F]" />
+          <Package className="h-6 w-6 text-[var(--tt-text-tertiary)]" />
         </div>
 
-        <p className="mt-4 text-sm font-semibold text-[#EDEEEB]">
+        <p className="mt-4 text-sm font-semibold text-[var(--tt-text-primary-alt)]">
           No hay productos registrados
         </p>
 
-        <p className="mt-1 max-w-xs text-xs leading-5 text-[#737B83]">
+        <p className="mt-1 max-w-xs text-xs leading-5 text-[var(--tt-text-muted)]">
           Los productos creados aparecerán aquí automáticamente.
         </p>
       </div>
@@ -64,18 +64,18 @@ export function InventoryTable({
   }
 
   return (
-    <div className="overflow-hidden bg-[#181B1F]">
+    <div className="overflow-hidden bg-[var(--tt-bg-surface)]">
       {/* =========================================================
           TABLE HEADER
       ========================================================== */}
 
-      <div className="flex items-center justify-between border-b border-[#292E34] px-5 py-4 sm:px-6">
+      <div className="flex items-center justify-between border-b border-[var(--tt-border)] px-5 py-4 sm:px-6">
         <div>
-          <h3 className="text-sm font-semibold text-[#F1F2EF]">
+          <h3 className="text-sm font-semibold text-[var(--tt-text-primary-alt2)]">
             Productos registrados
           </h3>
 
-          <p className="mt-0.5 text-xs text-[#737B83]">
+          <p className="mt-0.5 text-xs text-[var(--tt-text-muted)]">
             Últimos productos disponibles en el inventario
           </p>
         </div>
@@ -86,13 +86,13 @@ export function InventoryTable({
           className="
             rounded-full
             border
-            border-[#343A40]
-            bg-[#20242A]
+            border-[var(--tt-border-strong)]
+            bg-[var(--tt-bg-hover)]
             px-3
             py-1.5
           "
         >
-          <span className="text-xs font-semibold text-[#AEB4B9]">
+          <span className="text-xs font-semibold text-[var(--tt-text-dropdown)]">
             {products.length}{" "}
             {products.length === 1 ? "producto" : "productos"}
           </span>
@@ -105,7 +105,7 @@ export function InventoryTable({
 
       <div className="overflow-x-auto">
         <table className="w-full min-w-[680px]">
-          <thead className="border-b border-[#292E34] bg-[#15181B]">
+          <thead className="border-b border-[var(--tt-border)] bg-[#15181B]">
             <tr>
               <th
                 className="
@@ -116,7 +116,7 @@ export function InventoryTable({
                   font-semibold
                   uppercase
                   tracking-[0.14em]
-                  text-[#6F777F]
+                  text-[var(--tt-text-icon-tertiary)]
                   sm:px-6
                 "
               >
@@ -132,7 +132,7 @@ export function InventoryTable({
                   font-semibold
                   uppercase
                   tracking-[0.14em]
-                  text-[#6F777F]
+                  text-[var(--tt-text-icon-tertiary)]
                 "
               >
                 Categoría
@@ -147,7 +147,7 @@ export function InventoryTable({
                   font-semibold
                   uppercase
                   tracking-[0.14em]
-                  text-[#6F777F]
+                  text-[var(--tt-text-icon-tertiary)]
                   sm:px-6
                 "
               >
@@ -164,7 +164,7 @@ export function InventoryTable({
                   group
                   transition-colors
                   duration-200
-                  hover:bg-[#1D2126]
+                  hover:bg-[var(--tt-bg-hover-alt)]
                 "
               >
                 {/* =================================================
@@ -185,12 +185,12 @@ export function InventoryTable({
                         justify-center
                         rounded-xl
                         border
-                        border-[#343A40]
-                        bg-[#20242A]
+                        border-[var(--tt-border-strong)]
+                        bg-[var(--tt-bg-hover)]
                         transition-all
                         duration-200
-                        group-hover:border-[#4A5057]
-                        group-hover:bg-[#292E34]
+                        group-hover:border-[var(--tt-border-focus)]
+                        group-hover:bg-[var(--tt-border)]
                       "
                     >
                       <Package
@@ -200,7 +200,7 @@ export function InventoryTable({
                           text-[#929AA2]
                           transition-colors
                           duration-200
-                          group-hover:text-[#D6A46A]
+                          group-hover:text-[var(--tt-accent)]
                         "
                       />
                     </div>
@@ -211,15 +211,15 @@ export function InventoryTable({
                           truncate
                           text-sm
                           font-semibold
-                          text-[#EDEEEB]
+                          text-[var(--tt-text-primary-alt)]
                           transition-colors
-                          group-hover:text-[#F5F5F2]
+                          group-hover:text-[var(--tt-text-primary)]
                         "
                       >
                         {product.name}
                       </p>
 
-                      <p className="mt-0.5 text-[11px] text-[#656D75]">
+                      <p className="mt-0.5 text-[11px] text-[var(--tt-text-icon-secondary)]">
                         ID: {product.id}
                       </p>
                     </div>
@@ -239,13 +239,13 @@ export function InventoryTable({
                         gap-1.5
                         rounded-lg
                         border
-                        border-[#343A40]
-                        bg-[#20242A]
+                        border-[var(--tt-border-strong)]
+                        bg-[var(--tt-bg-hover)]
                         px-2.5
                         py-1.5
                         text-xs
                         font-medium
-                        text-[#AEB4B9]
+                        text-[var(--tt-text-dropdown)]
                       "
                     >
                       <Tag className="h-3 w-3 text-[#8A929A]" />
@@ -305,19 +305,19 @@ export function InventoryTable({
           items-center
           justify-between
           border-t
-          border-[#292E34]
+          border-[var(--tt-border)]
           bg-[#15181B]
           px-5
           py-3.5
           sm:px-6
         "
       >
-        <p className="text-[11px] text-[#656D75]">
+        <p className="text-[11px] text-[var(--tt-text-icon-secondary)]">
           Inventario de Court Store
         </p>
 
         <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#8BA78D]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--tt-success)]" />
 
           <span className="text-[11px] font-medium text-[#7F8981]">
             Inventario actualizado

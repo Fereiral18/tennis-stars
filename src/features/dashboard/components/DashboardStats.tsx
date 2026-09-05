@@ -32,10 +32,10 @@ export function DashboardStats({
       value: totalProducts,
       description: "Productos registrados",
       icon: Package,
-      iconColor: "text-[#D6A46A]",
-      iconBackground: "bg-[#29231D]",
+      iconColor: "text-[var(--tt-accent)]",
+      iconBackground: "bg-[var(--tt-avatar-bg)]",
       borderColor: "border-[#40372D]",
-      hoverBorder: "hover:border-[#574936]",
+      hoverBorder: "hover:border-[var(--tt-accent-border)]",
     },
     {
       title: "Categorías",
@@ -96,7 +96,7 @@ export function DashboardStats({
               border
               ${stat.borderColor}
               ${stat.hoverBorder}
-              bg-[#181B1F]
+              bg-[var(--tt-bg-surface)]
               p-5
               shadow-[0_12px_30px_rgba(0,0,0,0.14)]
               transition-all
@@ -128,7 +128,7 @@ export function DashboardStats({
               <div className="min-w-0">
                 {/* Título */}
 
-                <p className="text-xs font-medium uppercase tracking-[0.12em] text-[#8F969D]">
+                <p className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--tt-text-secondary)]">
                   {stat.title}
                 </p>
 
@@ -141,7 +141,7 @@ export function DashboardStats({
                     text-2xl
                     font-semibold
                     tracking-tight
-                    text-[#F5F5F2]
+                    text-[var(--tt-text-primary)]
                     sm:text-[1.7rem]
                   "
                 >

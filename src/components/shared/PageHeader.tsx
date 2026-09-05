@@ -31,7 +31,7 @@ export function PageHeader({
               w-1
               shrink-0
               rounded-full
-              bg-[#D6A46A]
+              bg-[var(--tt-accent)]
               shadow-[0_0_10px_rgba(214,164,106,0.18)]
             "
           />
@@ -41,7 +41,7 @@ export function PageHeader({
               text-2xl
               font-semibold
               tracking-tight
-              text-[#F5F5F2]
+              text-[var(--tt-text-primary)]
               sm:text-[1.65rem]
             "
           >
@@ -57,7 +57,7 @@ export function PageHeader({
               pl-4
               text-sm
               leading-6
-              text-[#7F878F]
+              text-[var(--tt-text-tertiary)]
             "
           >
             {description}

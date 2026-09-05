@@ -6,7 +6,7 @@ import { useCustomers } from "../hooks/useCustomers";
 import { CustomerTable } from "../components/CustomerTable";
 
 const PAGE_WRAPPER_CLASSNAME =
-  "min-h-full space-y-6 bg-[#101214] p-4 text-[#F5F5F2] sm:p-6 lg:p-8";
+  "min-h-full space-y-6 bg-[var(--tt-bg-page)] p-4 text-[var(--tt-text-primary)] sm:p-6 lg:p-8";
 
 export function CustomersPage() {
   const { customers, isLoading, isError } =
@@ -33,7 +33,7 @@ export function CustomersPage() {
           description="Consultá los clientes que compraron en Court Store."
         />
 
-        <div className="overflow-hidden rounded-3xl border border-[#3D3435] bg-[#181B1F] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+        <div className="overflow-hidden rounded-3xl border border-[var(--tt-border-danger)] bg-[var(--tt-bg-surface)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
           <EmptyState
             title="No fue posible cargar los clientes"
             description="Ocurrió un error al consultar los datos."
@@ -51,14 +51,14 @@ export function CustomersPage() {
       />
 
       {customers.length === 0 ? (
-        <div className="overflow-hidden rounded-3xl border border-dashed border-[#343A40] bg-[#181B1F] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+        <div className="overflow-hidden rounded-3xl border border-dashed border-[var(--tt-border-strong)] bg-[var(--tt-bg-surface)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
           <EmptyState
             title="No hay clientes todavía"
             description="Los clientes aparecerán acá una vez que se registren ventas."
           />
         </div>
       ) : (
-        <div className="overflow-hidden rounded-3xl border border-[#292E34] bg-[#101214] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+        <div className="overflow-hidden rounded-3xl border border-[var(--tt-border)] bg-[var(--tt-bg-page)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
           <CustomerTable customers={customers} />
         </div>
       )}

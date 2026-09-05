@@ -123,8 +123,8 @@ export function ProductsPage() {
         className="
           min-h-full
           space-y-6
-          bg-[#101214]
-          text-[#F5F5F2]
+          bg-[var(--tt-bg-page)]
+          text-[var(--tt-text-primary)]
         "
       >
         <PageHeader
@@ -137,8 +137,8 @@ export function ProductsPage() {
             overflow-hidden
             rounded-3xl
             border
-            border-[#292E34]
-            bg-[#181B1F]
+            border-[var(--tt-border)]
+            bg-[var(--tt-bg-surface)]
             shadow-[0_12px_30px_rgba(0,0,0,0.14)]
           "
         >
@@ -157,8 +157,8 @@ export function ProductsPage() {
         className="
           min-h-full
           space-y-6
-          bg-[#101214]
-          text-[#F5F5F2]
+          bg-[var(--tt-bg-page)]
+          text-[var(--tt-text-primary)]
         "
       >
         <PageHeader
@@ -171,8 +171,8 @@ export function ProductsPage() {
             overflow-hidden
             rounded-3xl
             border
-            border-[#3D3435]
-            bg-[#181B1F]
+            border-[var(--tt-border-danger)]
+            bg-[var(--tt-bg-surface)]
             shadow-[0_12px_30px_rgba(0,0,0,0.14)]
           "
         >
@@ -190,8 +190,8 @@ export function ProductsPage() {
       className="
         min-h-full
         space-y-6
-        bg-[#101214]
-        text-[#F5F5F2]
+        bg-[var(--tt-bg-page)]
+        text-[var(--tt-text-primary)]
       "
     >
       {/* Page header */}
@@ -210,18 +210,18 @@ export function ProductsPage() {
               gap-2
               rounded-xl
               border
-              border-[#574936]
-              bg-[#D6A46A]
+              border-[var(--tt-accent-border)]
+              bg-[var(--tt-accent)]
               px-4
               py-2.5
               text-sm
               font-semibold
-              text-[#171411]
+              text-[var(--tt-accent-foreground)]
               shadow-[0_8px_20px_rgba(0,0,0,0.16)]
               transition-all
               duration-200
-              hover:border-[#6A5841]
-              hover:bg-[#E0B77F]
+              hover:border-[var(--tt-accent-border-hover)]
+              hover:bg-[var(--tt-accent-hover)]
               hover:shadow-[0_12px_26px_rgba(0,0,0,0.22)]
               active:scale-[0.98]
             "
@@ -249,8 +249,8 @@ export function ProductsPage() {
             rounded-3xl
             border
             border-dashed
-            border-[#343A40]
-            bg-[#181B1F]
+            border-[var(--tt-border-strong)]
+            bg-[var(--tt-bg-surface)]
             shadow-[0_12px_30px_rgba(0,0,0,0.14)]
           "
         >
@@ -270,17 +270,17 @@ export function ProductsPage() {
                     gap-2
                     rounded-xl
                     border
-                    border-[#574936]
-                    bg-[#D6A46A]
+                    border-[var(--tt-accent-border)]
+                    bg-[var(--tt-accent)]
                     px-4
                     py-2.5
                     text-sm
                     font-semibold
-                    text-[#171411]
+                    text-[var(--tt-accent-foreground)]
                     transition-all
                     duration-200
-                    hover:border-[#6A5841]
-                    hover:bg-[#E0B77F]
+                    hover:border-[var(--tt-accent-border-hover)]
+                    hover:bg-[var(--tt-accent-hover)]
                     active:scale-[0.98]
                   "
                 >
@@ -306,8 +306,8 @@ export function ProductsPage() {
             overflow-hidden
             rounded-3xl
             border
-            border-[#292E34]
-            bg-[#101214]
+            border-[var(--tt-border)]
+            bg-[var(--tt-bg-page)]
             shadow-[0_12px_30px_rgba(0,0,0,0.14)]
           "
         >
