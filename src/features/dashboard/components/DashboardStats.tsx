@@ -126,12 +126,7 @@ export function DashboardStats({
 
             <div className="relative flex items-start justify-between gap-4">
               <div className="min-w-0">
-                {/* Título */}
-
-                <p className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--tt-text-secondary)]">
-                  {stat.title}
-                </p>
-
+               
                 {/* Valor */}
 
                 <p
