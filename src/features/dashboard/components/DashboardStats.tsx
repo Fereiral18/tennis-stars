@@ -34,7 +34,7 @@ export function DashboardStats({
       icon: Package,
       iconColor: "text-[var(--tt-accent)]",
       iconBackground: "bg-[var(--tt-avatar-bg)]",
-      borderColor: "border-[#40372D]",
+      borderColor: "border-[var(--tt-icon-border-amber)]",
       hoverBorder: "hover:border-[var(--tt-accent-border)]",
     },
     {
@@ -42,30 +42,30 @@ export function DashboardStats({
       value: totalCategories,
       description: "Categorías disponibles",
       icon: FolderKanban,
-      iconColor: "text-[#9BAF9D]",
-      iconBackground: "bg-[#1D251F]",
-      borderColor: "border-[#303A32]",
-      hoverBorder: "hover:border-[#3B4A3D]",
+      iconColor: "text-[var(--tt-icon-text-green)]",
+      iconBackground: "bg-[var(--tt-icon-bg-green)]",
+      borderColor: "border-[var(--tt-icon-border-green)]",
+      hoverBorder: "hover:border-[var(--tt-icon-border-green-hover)]",
     },
     {
       title: "Ventas",
       value: totalSales,
       description: "Ventas registradas",
       icon: ShoppingCart,
-      iconColor: "text-[#B8A0D9]",
-      iconBackground: "bg-[#282230]",
-      borderColor: "border-[#40364B]",
-      hoverBorder: "hover:border-[#554765]",
+      iconColor: "text-[var(--tt-icon-text-purple)]",
+      iconBackground: "bg-[var(--tt-icon-bg-purple)]",
+      borderColor: "border-[var(--tt-icon-border-purple)]",
+      hoverBorder: "hover:border-[var(--tt-icon-border-purple-hover)]",
     },
     {
       title: "Ingresos",
       value: formatCurrency(totalRevenue),
       description: "Ingresos acumulados",
       icon: CircleDollarSign,
-      iconColor: "text-[#8FB6A0]",
-      iconBackground: "bg-[#1D2822]",
-      borderColor: "border-[#304137]",
-      hoverBorder: "hover:border-[#405849]",
+      iconColor: "text-[var(--tt-icon-text-teal)]",
+      iconBackground: "bg-[var(--tt-icon-bg-teal)]",
+      borderColor: "border-[var(--tt-icon-border-teal)]",
+      hoverBorder: "hover:border-[var(--tt-icon-border-teal-hover)]",
     },
   ];
 
@@ -101,7 +101,7 @@ export function DashboardStats({
               shadow-[0_12px_30px_rgba(0,0,0,0.14)]
               transition-all
               duration-300
-              hover:bg-[#E6D5BE]
+              hover:bg-[var(--tt-card-hover-tint)]
               hover:shadow-[0_18px_40px_rgba(0,0,0,0.22)]
             `}
           >
@@ -150,7 +150,7 @@ export function DashboardStats({
 
                 {/* Descripción */}
 
-                <p className="mt-1.5 text-xs text-[#727980]">
+                <p className="mt-1.5 text-xs text-[var(--tt-text-description)]">
                   {stat.description}
                 </p>
               </div>
@@ -199,7 +199,7 @@ export function DashboardStats({
                 `}
               />
 
-              <span className="h-px flex-1 bg-[#272C31]" />
+              <span className="h-px flex-1 bg-[var(--tt-progress-track)]" />
             </div>
           </motion.div>
         );

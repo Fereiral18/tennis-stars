@@ -168,7 +168,7 @@ export function ProductTable({
                   ? `
                     border-[var(--tt-avatar-border)]
                     bg-[var(--tt-avatar-bg)]
-                    text-[#D0AE82]
+                    text-[var(--tt-accent-soft)]
                   `
                   : `
                     border-[var(--tt-border-strong)]
@@ -189,7 +189,7 @@ export function ProductTable({
       header: "Marca",
       className: "bg-[var(--tt-bg-page)]",
       render: (product) => (
-        <span className="text-sm font-medium text-[#C1C5C9]">
+        <span className="text-sm font-medium text-[var(--tt-badge-text)]">
           {product.brand}
         </span>
       ),
@@ -242,7 +242,7 @@ export function ProductTable({
             text-sm
             font-semibold
             tracking-tight
-            text-[#E8C79F]
+            text-[var(--tt-price-amber)]
           "
         >
           {new Intl.NumberFormat("es-AR", {

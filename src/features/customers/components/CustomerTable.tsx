@@ -48,7 +48,7 @@ export function CustomerTable({
         className: `${CELL_BG} whitespace-nowrap`,
 
         render: (customer) => (
-          <div className="flex items-center gap-2 text-[#C1C5C9]">
+          <div className="flex items-center gap-2 text-[var(--tt-badge-text)]">
             <ShoppingBag className="h-4 w-4 shrink-0 text-[var(--tt-text-icon-secondary)]" />
 
             <span className="font-medium">
@@ -77,7 +77,7 @@ export function CustomerTable({
               py-1.5
               text-xs
               font-semibold
-              text-[#D0AE82]
+              text-[var(--tt-accent-soft)]
             "
           >
             <Package className="h-3.5 w-3.5" />

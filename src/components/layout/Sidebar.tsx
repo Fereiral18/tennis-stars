@@ -94,7 +94,7 @@ export function Sidebar({ onClose }: SidebarProps) {
               overflow-hidden
               rounded-xl
               border
-              border-[#554533]
+              border-[var(--tt-avatar-border)]
               bg-[var(--tt-avatar-bg)]
               text-[var(--tt-avatar-text)]
               shadow-[0_8px_20px_rgba(0,0,0,0.18)]
@@ -299,7 +299,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                 justify-center
                 rounded-xl
                 border
-                border-[#3F382F]
+                border-[var(--tt-avatar-border)]
                 bg-[var(--tt-avatar-bg)]
                 text-sm
                 font-semibold
@@ -359,7 +359,7 @@ export function Sidebar({ onClose }: SidebarProps) {
             transition-all
             duration-200
             hover:bg-[var(--tt-accent-chip-bg-hover)]
-            hover:text-[#D8B18A]
+            hover:text-[var(--tt-accent-hover)]
           "
         >
           <div

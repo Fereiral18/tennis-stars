@@ -150,7 +150,7 @@ export function DashboardPage() {
                   gap-2
                   rounded-full
                   border
-                  border-[#353A40]
+                  border-[var(--tt-badge-border)]
                   bg-[var(--tt-bg-hover)]
                   px-3
                   py-1.5
@@ -164,7 +164,7 @@ export function DashboardPage() {
                     font-semibold
                     uppercase
                     tracking-[0.18em]
-                    text-[#C1C5C9]
+                    text-[var(--tt-badge-text)]
                   "
                 >
                  Tennis Stars
@@ -187,8 +187,8 @@ export function DashboardPage() {
                 gap-2
                 rounded-full
                 border
-                border-[#304238]
-                bg-[#18211C]
+                border-[var(--tt-status-pill-border)]
+                bg-[var(--tt-status-pill-bg)]
                 px-3.5
                 py-2
               "
@@ -210,7 +210,7 @@ export function DashboardPage() {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--tt-success)]" />
               </span>
 
-              <span className="text-xs font-medium text-[#AFC0B2]">
+              <span className="text-xs font-medium text-[var(--tt-status-pill-text)]">
                 Tienda activa
               </span>
             </div>
@@ -291,7 +291,7 @@ export function DashboardPage() {
                 transition-all
                 duration-300
                 hover:border-[var(--tt-border-hover)]
-                hover:bg-[#E6D5BE]
+                hover:bg-[var(--tt-card-hover-tint)]
                 hover:shadow-[0_18px_40px_rgba(0,0,0,0.22)]
               "
             >
@@ -306,7 +306,7 @@ export function DashboardPage() {
                     justify-center
                     rounded-2xl
                     border
-                    border-[#40372D]
+                    border-[var(--tt-icon-border-amber)]
                     bg-[var(--tt-avatar-bg)]
                     text-[var(--tt-accent)]
                     transition-all
@@ -338,7 +338,7 @@ export function DashboardPage() {
                   justify-center
                   rounded-full
                   border
-                  border-[#30353B]
+                  border-[var(--tt-icon-border-neutral)]
                   bg-[var(--tt-bg-hover)]
                   transition-all
                   duration-300
@@ -385,7 +385,7 @@ export function DashboardPage() {
                 transition-all
                 duration-300
                 hover:border-[var(--tt-border-hover)]
-                hover:bg-[#E6D5BE]
+                hover:bg-[var(--tt-card-hover-tint)]
                 hover:shadow-[0_18px_40px_rgba(0,0,0,0.22)]
               "
             >
@@ -400,13 +400,13 @@ export function DashboardPage() {
                     justify-center
                     rounded-2xl
                     border
-                    border-[#303A32]
-                    bg-[#1D251F]
-                    text-[#9BAF9D]
+                    border-[var(--tt-icon-border-green)]
+                    bg-[var(--tt-icon-bg-green)]
+                    text-[var(--tt-icon-text-green)]
                     transition-all
                     duration-300
-                    group-hover:border-[#3B4A3D]
-                    group-hover:bg-[#243027]
+                    group-hover:border-[var(--tt-icon-border-green-hover)]
+                    group-hover:bg-[var(--tt-icon-bg-green-hover)]
                   "
                 >
                   <FolderKanban className="h-5 w-5" />
@@ -432,7 +432,7 @@ export function DashboardPage() {
                   justify-center
                   rounded-full
                   border
-                  border-[#30353B]
+                  border-[var(--tt-icon-border-neutral)]
                   bg-[var(--tt-bg-hover)]
                   transition-all
                   duration-300
@@ -448,7 +448,7 @@ export function DashboardPage() {
                     transition-transform
                     duration-300
                     group-hover:translate-x-0.5
-                    group-hover:text-[#9BAF9D]
+                    group-hover:text-[var(--tt-icon-text-green)]
                   "
                 />
               </div>
@@ -471,15 +471,15 @@ export function DashboardPage() {
                 justify-between
                 rounded-2xl
                 border
-                border-[#594735]
-                bg-[#241F1A]
+                border-[var(--tt-sales-card-border)]
+                bg-[var(--tt-sales-card-bg)]
                 p-5
                 text-left
                 shadow-[0_12px_30px_rgba(0,0,0,0.16)]
                 transition-all
                 duration-300
-                hover:border-[#745C43]
-                hover:bg-[#2A241E]
+                hover:border-[var(--tt-sales-card-border-hover)]
+                hover:bg-[var(--tt-sales-card-bg-hover)]
                 hover:shadow-[0_18px_40px_rgba(0,0,0,0.24)]
               "
             >
@@ -494,24 +494,24 @@ export function DashboardPage() {
                     justify-center
                     rounded-2xl
                     border
-                    border-[#624D38]
-                    bg-[#30271F]
+                    border-[var(--tt-sales-icon-border)]
+                    bg-[var(--tt-sales-icon-bg)]
                     text-[var(--tt-accent-hover)]
                     transition-all
                     duration-300
-                    group-hover:border-[#806344]
-                    group-hover:bg-[#392E24]
+                    group-hover:border-[var(--tt-sales-icon-border-hover)]
+                    group-hover:bg-[var(--tt-sales-icon-bg-hover)]
                   "
                 >
                   <ShoppingCart className="h-5 w-5" />
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold text-[#F5F1EA]">
+                  <p className="text-sm font-semibold text-[var(--tt-sales-card-title)]">
                     Nueva venta
                   </p>
 
-                  <p className="mt-1 text-xs text-[#A79B8E]">
+                  <p className="mt-1 text-xs text-[var(--tt-sales-card-subtitle)]">
                     Generar una venta
                   </p>
                 </div>
@@ -526,19 +526,19 @@ export function DashboardPage() {
                   justify-center
                   rounded-full
                   border
-                  border-[#584735]
+                  border-[var(--tt-sales-arrow-border)]
                   bg-[var(--tt-accent-chip-bg)]
                   transition-all
                   duration-300
-                  group-hover:border-[#806344]
-                  group-hover:bg-[#392F25]
+                  group-hover:border-[var(--tt-sales-icon-border-hover)]
+                  group-hover:bg-[var(--tt-sales-arrow-bg-hover)]
                 "
               >
                 <ArrowRight
                   className="
                     h-4
                     w-4
-                    text-[#A99A89]
+                    text-[var(--tt-sales-arrow-icon)]
                     transition-transform
                     duration-300
                     group-hover:translate-x-0.5
@@ -581,7 +581,7 @@ export function DashboardPage() {
                 hidden
                 text-xs
                 font-semibold
-                text-[#A9B0B7]
+                text-[var(--tt-link-muted)]
                 transition-colors
                 hover:text-[var(--tt-accent)]
                 sm:block
