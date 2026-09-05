@@ -17,7 +17,7 @@ export function CustomersPage() {
       <div className={PAGE_WRAPPER_CLASSNAME}>
         <PageHeader
           title="Clientes"
-          description="Consultá los clientes que compraron en Court Store."
+          description="Consultá los clientes que compraron en Tennis Stars."
         />
 
         <LoadingState message="Cargando clientes..." />
