@@ -101,7 +101,7 @@ export function DashboardStats({
               shadow-[0_12px_30px_rgba(0,0,0,0.14)]
               transition-all
               duration-300
-              hover:bg-[#1C2025]
+              hover:bg-[#E6D5BE]
               hover:shadow-[0_18px_40px_rgba(0,0,0,0.22)]
             `}
           >

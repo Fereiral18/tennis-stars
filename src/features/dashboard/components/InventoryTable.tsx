@@ -283,7 +283,7 @@ export function InventoryTable({
                       text-sm
                       font-semibold
                       tracking-tight
-                      text-[#E8C79F]
+                      text-[#6A994E]
                     "
                   >
                     {formatCurrency(product.price)}
