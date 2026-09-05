@@ -23,17 +23,17 @@ const statusLabels: Record<Sale["status"], string> = {
 
 const statusStyles: Record<Sale["status"], string> = {
   PENDING:
-    "border-[#4A3B28] bg-[var(--tt-avatar-bg)] text-[var(--tt-accent)]",
+    "border-[var(--tt-icon-border-amber)] bg-[var(--tt-avatar-bg)] text-[var(--tt-accent)]",
   CONFIRMED:
-    "border-[#334047] bg-[#20282C] text-[#9EB4BD]",
+    "border-[var(--tt-status-confirmed-border)] bg-[var(--tt-status-confirmed-bg)] text-[var(--tt-status-confirmed-text)]",
   PREPARING:
-    "border-[#493C2D] bg-[#28241F] text-[#D2AD7C]",
+    "border-[var(--tt-status-preparing-border)] bg-[var(--tt-status-preparing-bg)] text-[var(--tt-status-preparing-text)]",
   SHIPPED:
-    "border-[#40364B] bg-[#282230] text-[#B8A0D9]",
+    "border-[var(--tt-icon-border-purple)] bg-[var(--tt-icon-bg-purple)] text-[var(--tt-icon-text-purple)]",
   DELIVERED:
-    "border-[#304137] bg-[#1D2822] text-[#8FB6A0]",
+    "border-[var(--tt-icon-border-teal)] bg-[var(--tt-icon-bg-teal)] text-[var(--tt-icon-text-teal)]",
   CANCELLED:
-    "border-[#493334] bg-[var(--tt-danger-bg-hover)] text-[var(--tt-danger-text)]",
+    "border-[var(--tt-border-danger)] bg-[var(--tt-danger-bg-hover)] text-[var(--tt-danger-text)]",
 };
 
 function formatCurrency(value: number): string {
@@ -198,7 +198,7 @@ export function RecentSales({
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full min-w-[760px]">
-          <thead className="border-b border-[var(--tt-border)] bg-[#15181B]">
+          <thead className="border-b border-[var(--tt-border)] bg-[var(--tt-bg-page)]">
             <tr>
               <th
                 className="
@@ -279,7 +279,7 @@ export function RecentSales({
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-[#252A2F]">
+          <tbody className="divide-y divide-[var(--tt-border)]">
             {sales.map((sale) => {
               const firstItem = sale.items[0];
 
@@ -335,7 +335,7 @@ export function RecentSales({
                         </p>
 
                         <div className="mt-1 flex items-center gap-1.5">
-                          <Mail className="h-3 w-3 shrink-0 text-[#5F676F]" />
+                          <Mail className="h-3 w-3 shrink-0 text-[var(--tt-text-icon-secondary)]" />
 
                           <p
                             className="
@@ -359,7 +359,7 @@ export function RecentSales({
                           truncate
                           text-sm
                           font-medium
-                          text-[#111827]
+                          text-[var(--tt-text-strong)]
                         "
                       >
                         {firstItem?.productName ?? "Producto"}
@@ -432,7 +432,7 @@ export function RecentSales({
                         text-sm
                         font-semibold
                         tracking-tight
-                        text-[#6A994E]
+                        text-[var(--tt-price-text)]
                       "
                     >
                       {formatCurrency(sale.total)}
@@ -453,7 +453,7 @@ export function RecentSales({
           justify-between
           border-t
           border-[var(--tt-border)]
-          bg-[#15181B]
+          bg-[var(--tt-bg-page)]
           px-5
           py-3.5
           sm:px-6
@@ -474,7 +474,7 @@ export function RecentSales({
             "
           />
 
-          <span className="text-[11px] font-medium text-[#7F8981]">
+          <span className="text-[11px] font-medium text-[var(--tt-text-tertiary)]">
             Actividad actualizada
           </span>
         </div>

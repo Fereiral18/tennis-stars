@@ -125,7 +125,7 @@ export function SaleTable({
               <Package className="h-4 w-4 shrink-0 text-[var(--tt-text-icon-secondary)]" />
 
               <div className="min-w-0">
-                <p className="max-w-[180px] truncate font-medium text-[#C1C5C9]">
+                <p className="max-w-[180px] truncate font-medium text-[var(--tt-badge-text)]">
                   {item.productName}
                 </p>
 
@@ -145,7 +145,7 @@ export function SaleTable({
         className: `${CELL_BG} whitespace-nowrap`,
 
         render: (sale) => (
-          <span className="font-semibold text-[#E8C79F]">
+          <span className="font-semibold text-[var(--tt-price-amber)]">
             {formatCurrency(
               sale.total,
             )}
@@ -208,7 +208,7 @@ export function SaleTable({
                 sale,
               )
             }
-            className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--tt-border-strong)] bg-[var(--tt-bg-hover)] px-2.5 py-1.5 text-xs font-medium text-[var(--tt-text-dropdown)] transition hover:border-[var(--tt-border-focus)] hover:bg-[#262B31] hover:text-[var(--tt-text-primary-alt2)]"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--tt-border-strong)] bg-[var(--tt-bg-hover)] px-2.5 py-1.5 text-xs font-medium text-[var(--tt-text-dropdown)] transition hover:border-[var(--tt-border-focus)] hover:bg-[var(--tt-border)] hover:text-[var(--tt-text-primary-alt2)]"
           >
             <Eye className="h-3.5 w-3.5" />
 
