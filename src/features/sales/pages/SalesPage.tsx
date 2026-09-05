@@ -4,6 +4,7 @@ import {
 
 import {
   Plus,
+  Search,
 } from "lucide-react";
 
 import {
@@ -82,6 +83,27 @@ export function SalesPage() {
     isShippingDialogOpen,
     setIsShippingDialogOpen,
   ] = useState(false);
+
+  const [
+    customerSearch,
+    setCustomerSearch,
+  ] = useState("");
+
+  const normalizedSearch =
+    customerSearch
+      .trim()
+      .toLowerCase();
+
+  const filteredSales =
+    normalizedSearch.length >= 3
+      ? sales.filter((sale) =>
+          sale.customerName
+            .toLowerCase()
+            .includes(
+              normalizedSearch,
+            ),
+        )
+      : sales;
 
   function handleCreateSale(): void {
     setIsSaleDialogOpen(true);
@@ -296,16 +318,48 @@ export function SalesPage() {
           />
         </div>
       ) : (
-        <div className="overflow-hidden rounded-3xl border border-[var(--tt-border)] bg-[var(--tt-bg-page)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
-          <SaleTable
-            sales={sales}
-            onViewShipping={
-              handleViewShipping
-            }
-            onUpdateStatus={
-              handleUpdateStatus
-            }
-          />
+        <div className="space-y-4">
+          <div className="relative w-full sm:max-w-xs">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--tt-text-muted)]" />
+
+            <input
+              type="text"
+              value={
+                customerSearch
+              }
+              onChange={(
+                event,
+              ) =>
+                setCustomerSearch(
+                  event.target
+                    .value,
+                )
+              }
+              placeholder="Buscar por nombre de cliente..."
+              className="h-10 w-full rounded-xl border border-[var(--tt-border-strong)] bg-[var(--tt-bg-surface)] pl-9 pr-3 text-sm text-[var(--tt-text-primary)] outline-none transition-colors focus:border-[var(--tt-accent)]"
+            />
+          </div>
+
+          <div className="overflow-hidden rounded-3xl border border-[var(--tt-border)] bg-[var(--tt-bg-page)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+            {filteredSales.length === 0 ? (
+              <EmptyState
+                title="No se encontraron ventas"
+                description="Probá con otro nombre de cliente."
+              />
+            ) : (
+              <SaleTable
+                sales={
+                  filteredSales
+                }
+                onViewShipping={
+                  handleViewShipping
+                }
+                onUpdateStatus={
+                  handleUpdateStatus
+                }
+              />
+            )}
+          </div>
         </div>
       )}
 
