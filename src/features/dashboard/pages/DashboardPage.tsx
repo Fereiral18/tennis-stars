@@ -39,7 +39,7 @@ export function DashboardPage() {
         <div className="mx-auto max-w-7xl">
           <PageHeader
             title="Dashboard"
-            description="Resumen general de Court Store"
+            description="Resumen general de Tennis Stars"
           />
 
           <div

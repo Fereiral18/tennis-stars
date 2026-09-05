@@ -121,7 +121,7 @@ export function Sidebar({ onClose }: SidebarProps) {
 
           <div>
             <p className="text-sm font-semibold tracking-tight text-[var(--tt-text-primary)]">
-              Court Store
+              Tennis Stars
             </p>
 
             <p className="mt-0.5 text-[11px] font-medium text-[var(--tt-text-tertiary)]">
