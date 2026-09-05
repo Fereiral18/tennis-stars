@@ -270,7 +270,9 @@ export function SaleTable({
 
               <DropdownMenuItem
                 disabled={
-                  sale.status === "CANCELLED"
+                  sale.status === "CANCELLED" ||
+                  (sale.status === "SHIPPED" &&
+                    sale.paymentStatus === "PAID")
                 }
                 onClick={() =>
                   onUpdateStatus(
