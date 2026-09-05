@@ -359,7 +359,7 @@ export function RecentSales({
                           truncate
                           text-sm
                           font-medium
-                          text-[#D9DCDA]
+                          text-[#111827]
                         "
                       >
                         {firstItem?.productName ?? "Producto"}
@@ -432,7 +432,7 @@ export function RecentSales({
                         text-sm
                         font-semibold
                         tracking-tight
-                        text-[#E8C79F]
+                        text-[#6A994E]
                       "
                     >
                       {formatCurrency(sale.total)}
