@@ -95,7 +95,6 @@ export function InventoryTable({
         >
           <span className="whitespace-nowrap text-xs font-semibold text-[var(--tt-text-dropdown)]">
             {products.length}{" "}
-            {products.length === 1 ? "producto" : "productos"}
           </span>
         </div>
       </div>
