@@ -69,7 +69,7 @@ export function InventoryTable({
           TABLE HEADER
       ========================================================== */}
 
-      <div className="flex items-center justify-between border-b border-[var(--tt-border)] px-5 py-4 sm:px-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--tt-border)] px-5 py-4 sm:px-6">
         <div>
           <h3 className="text-sm font-semibold text-[var(--tt-text-primary-alt2)]">
             Productos registrados
@@ -84,6 +84,7 @@ export function InventoryTable({
 
         <div
           className="
+            shrink-0
             rounded-full
             border
             border-[var(--tt-border-strong)]
@@ -92,7 +93,7 @@ export function InventoryTable({
             py-1.5
           "
         >
-          <span className="text-xs font-semibold text-[var(--tt-text-dropdown)]">
+          <span className="whitespace-nowrap text-xs font-semibold text-[var(--tt-text-dropdown)]">
             {products.length}{" "}
             {products.length === 1 ? "producto" : "productos"}
           </span>
