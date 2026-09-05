@@ -214,7 +214,7 @@ export function ProductsPage() {
       {/* Page header */}
       <PageHeader
         title="Productos"
-        description="Administrá el catálogo de productos de Court Store."
+        description="Administrá el catálogo de productos de Tennis Store."
         action={
           <button
             type="button"

@@ -4,6 +4,6 @@ export const STORAGE_KEYS = {
 } as const;
 
 export const APP_CONFIG = {
-  name: "Court Store",
+  name: "Tennis Store.,
   description: "Tennis Sports Ecommerce",
 } as const;

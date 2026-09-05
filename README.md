@@ -1,6 +1,6 @@
 # Tennis Stars — Admin Dashboard
 
-Panel de administración para **Court Store**, un ecommerce de zapatillas deportivas (Nike, Adidas, Puma, Under Armour, New Balance, etc.). Permite gestionar categorías, productos (con marca, género y variantes de color/talla), ventas (con estado, pago y envío) y visualizar clientes e indicadores generales del negocio.
+Panel de administración para **Tennis Store.*, un ecommerce de zapatillas deportivas (Nike, Adidas, Puma, Under Armour, New Balance, etc.). Permite gestionar categorías, productos (con marca, género y variantes de color/talla), ventas (con estado, pago y envío) y visualizar clientes e indicadores generales del negocio.
 
 Este repositorio contiene únicamente el **frontend**. Consume la API REST expuesta por `Backend-tennis-stars` (NestJS + Prisma + PostgreSQL).
 

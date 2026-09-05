@@ -240,7 +240,7 @@ export function SalesPage() {
       <div className={pageWrapperClassName}>
         <PageHeader
           title="Ventas"
-          description="Consultá y registrá las ventas de Court Store."
+          description="Consultá y registrá las ventas de Tennis Store."
         />
 
         <LoadingState message="Cargando ventas..." />
@@ -253,7 +253,7 @@ export function SalesPage() {
       <div className={pageWrapperClassName}>
         <PageHeader
           title="Ventas"
-          description="Consultá y registrá las ventas de Court Store."
+          description="Consultá y registrá las ventas de Tennis Store."
         />
 
         <div className="overflow-hidden rounded-3xl border border-[var(--tt-border-danger)] bg-[var(--tt-bg-surface)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
@@ -270,7 +270,7 @@ export function SalesPage() {
     <div className={pageWrapperClassName}>
       <PageHeader
         title="Ventas"
-        description="Consultá y registrá las ventas de Court Store."
+        description="Consultá y registrá las ventas de Tennis Store."
         action={
           <button
             type="button"
