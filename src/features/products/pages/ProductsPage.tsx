@@ -214,6 +214,7 @@ export function ProductsPage() {
               bg-[var(--tt-accent)]
               px-4
               py-2.5
+              mr-5
               text-sm
               font-semibold
               text-[var(--tt-accent-foreground)]
