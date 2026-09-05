@@ -74,7 +74,7 @@ export function LoginForm({
           placeholder="••••••••"
           autoComplete="current-password"
           {...register("password")}
-          className="h-11 w-full rounded-lg border border-zinc-200 bg-white px-3 text-sm outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+          className="h-11 w-full rounded-lg border border-zinc-200 bg-white px-3 text-sm outline-none transition focus:border-zinc-900"
         />
 
         {errors.password && (
