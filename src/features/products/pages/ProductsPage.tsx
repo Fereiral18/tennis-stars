@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 
 import { PageHeader } from "@/components/shared/PageHeader";
 import { LoadingState } from "@/components/shared/LoadingState";
@@ -40,6 +40,21 @@ export function ProductsPage() {
     useState<Product | null>(null);
   const [productToDelete, setProductToDelete] =
     useState<Product | null>(null);
+
+  const [productSearch, setProductSearch] = useState("");
+
+  const normalizedProductSearch = productSearch
+    .trim()
+    .toLowerCase();
+
+  const filteredProducts =
+    normalizedProductSearch.length >= 3
+      ? products.filter((product) =>
+          product.name
+            .toLowerCase()
+            .includes(normalizedProductSearch),
+        )
+      : products;
 
   function handleCreate(): void {
     setSelectedProduct(null);
@@ -304,22 +319,47 @@ export function ProductsPage() {
           </div>
         </div>
       ) : (
-        <div
-          className="
-            overflow-hidden
-            rounded-3xl
-            border
-            border-[var(--tt-border)]
-            bg-[var(--tt-bg-page)]
-            shadow-[0_12px_30px_rgba(0,0,0,0.14)]
-          "
-        >
-          <ProductTable
-            products={products}
-            categories={categories}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-          />
+        <div className="space-y-4">
+          <div className="relative w-full sm:max-w-xs">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--tt-text-muted)]" />
+
+            <input
+              type="text"
+              value={productSearch}
+              onChange={(event) =>
+                setProductSearch(event.target.value)
+              }
+              placeholder="Buscar por nombre de producto..."
+              className="h-10 w-full rounded-xl border border-[var(--tt-border-strong)] bg-[var(--tt-bg-surface)] pl-9 pr-3 text-sm text-[var(--tt-text-primary)] outline-none transition-colors focus:border-[var(--tt-accent)]"
+            />
+          </div>
+
+          <div
+            className="
+              overflow-hidden
+              rounded-3xl
+              border
+              border-[var(--tt-border)]
+              bg-[var(--tt-bg-page)]
+              shadow-[0_12px_30px_rgba(0,0,0,0.14)]
+            "
+          >
+            {filteredProducts.length === 0 ? (
+              <div className="px-4 py-2 sm:px-6">
+                <EmptyState
+                  title="No se encontraron productos"
+                  description="Probá con otro nombre de producto."
+                />
+              </div>
+            ) : (
+              <ProductTable
+                products={filteredProducts}
+                categories={categories}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+              />
+            )}
+          </div>
         </div>
       )}
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 
 import {
   useCategories,
@@ -42,6 +42,21 @@ export function CategoriesPage() {
 
   const [categoryToDelete, setCategoryToDelete] =
     useState<Category | null>(null);
+
+  const [categorySearch, setCategorySearch] = useState("");
+
+  const normalizedCategorySearch = categorySearch
+    .trim()
+    .toLowerCase();
+
+  const filteredCategories =
+    normalizedCategorySearch.length >= 3
+      ? categories.filter((category) =>
+          category.name
+            .toLowerCase()
+            .includes(normalizedCategorySearch),
+        )
+      : categories;
 
   function handleCreate(): void {
     setSelectedCategory(null);
@@ -177,12 +192,35 @@ export function CategoriesPage() {
           />
         </div>
       ) : (
-        <div className="overflow-hidden rounded-3xl border border-[var(--tt-border)] bg-[var(--tt-bg-page)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
-          <CategoryTable
-            categories={categories}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-          />
+        <div className="space-y-4">
+          <div className="relative w-full sm:max-w-xs">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--tt-text-muted)]" />
+
+            <input
+              type="text"
+              value={categorySearch}
+              onChange={(event) =>
+                setCategorySearch(event.target.value)
+              }
+              placeholder="Buscar por nombre de categoría..."
+              className="h-10 w-full rounded-xl border border-[var(--tt-border-strong)] bg-[var(--tt-bg-surface)] pl-9 pr-3 text-sm text-[var(--tt-text-primary)] outline-none transition-colors focus:border-[var(--tt-accent)]"
+            />
+          </div>
+
+          <div className="overflow-hidden rounded-3xl border border-[var(--tt-border)] bg-[var(--tt-bg-page)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+            {filteredCategories.length === 0 ? (
+              <EmptyState
+                title="No se encontraron categorías"
+                description="Probá con otro nombre de categoría."
+              />
+            ) : (
+              <CategoryTable
+                categories={filteredCategories}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+              />
+            )}
+          </div>
         </div>
       )}
 
