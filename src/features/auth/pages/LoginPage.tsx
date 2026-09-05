@@ -268,7 +268,7 @@ export function LoginPage() {
 
                 <p className="mt-3 max-w-sm text-sm leading-6 text-[#403B35]/55">
                   Ingresá a tu cuenta para continuar gestionando
-                  Court Store.
+                  Tennis Store.
                 </p>
               </motion.div>
 

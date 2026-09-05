@@ -30,7 +30,7 @@ export function CustomersPage() {
       <div className={PAGE_WRAPPER_CLASSNAME}>
         <PageHeader
           title="Clientes"
-          description="Consultá los clientes que compraron en Court Store."
+          description="Consultá los clientes que compraron en Tennis Store."
         />
 
         <div className="overflow-hidden rounded-3xl border border-[var(--tt-border-danger)] bg-[var(--tt-bg-surface)] shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
@@ -47,7 +47,7 @@ export function CustomersPage() {
     <div className={PAGE_WRAPPER_CLASSNAME}>
       <PageHeader
         title="Clientes"
-        description="Consultá los clientes que compraron en Court Store."
+        description="Consultá los clientes que compraron en Tennis Store."
       />
 
       {customers.length === 0 ? (
