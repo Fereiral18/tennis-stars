@@ -50,7 +50,7 @@ export function LoginForm({
           placeholder="admin@courtstore.com"
           autoComplete="email"
           {...register("email")}
-          className="h-11 w-full rounded-lg border border-zinc-200 bg-white px-3 text-sm outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+          className="h-11 w-full rounded-lg border border-zinc-200 bg-white px-3 text-sm outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 [&:-webkit-autofill]:[-webkit-text-fill-color:#000] [&:-webkit-autofill]:[-webkit-box-shadow:0_0_0px_1000px_#fff_inset] [&:-webkit-autofill:hover]:[-webkit-text-fill-color:#000] [&:-webkit-autofill:hover]:[-webkit-box-shadow:0_0_0px_1000px_#fff_inset] [&:-webkit-autofill:focus]:[-webkit-text-fill-color:#000] [&:-webkit-autofill:focus]:[-webkit-box-shadow:0_0_0px_1000px_#fff_inset]"
         />
 
         {errors.email && (
