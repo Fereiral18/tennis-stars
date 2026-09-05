@@ -125,6 +125,7 @@ export function ProductsPage() {
           space-y-6
           bg-[var(--tt-bg-page)]
           text-[var(--tt-text-primary)]
+          p-4
         "
       >
         <PageHeader
